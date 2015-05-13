@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html data-ng-app="localStorage-example">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./example.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="https://github.com/js-data/js-data/releases/download/1.2.0/js-data.min.js"></script>
+  <script src="https://github.com/js-data/js-data-angular/releases/download/2.1.0/js-data-angular.min.js"></script>
+  <script
+    src="https://github.com/js-data/js-data-localstorage/releases/download/1.0.0/js-data-localstorage.min.js"></script>
+  <script src="./example.js"></script>
+</head>
+<body data-ng-controller="localStorageCtrl as lsCtrl">
+<div class="example-masthead">
+  <div class="container">
+    <nav class="example-nav">
+      <a class="example-nav-item" href="http://www.js-data.io">js-data.io</a>
+      <a class="example-nav-item" href="http://www.js-data.io/docs/dslocalstorageadapter">API Documentation</a>
+      <a class="example-nav-item" href="https://github.com/js-data/js-data-localstorage">GitHub</a>
+      <a class="example-nav-item" href="https://groups.io/org/groupsio/jsdata">Mailing List</a>
+      <a class="example-nav-item" href="https://github.com/js-data/js-data-localstorage/issues">Issues</a>
+      <a class="example-nav-item active" href="#">LocalStorage Adapter Demo</a>
+    </nav>
+  </div>
+</div>
+<div class="container" style="margin-top: 100px">
+  <div class="col-sm-6">
+    <h1 class="page-header">js-data localStorage example</h1>
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Users</h3>
+      </div>
+      <div class="list-group">
+        <div class="list-group-item" data-ng-repeat="user in users track by user.id">
+          <div class="pull-right">
+            <button class="btn btn-xs btn-danger" data-ng-click="remove(user)">
+              Delete
+            </button>
+          </div>
+          {{ user.id }}: {{ user.name }}
+        </div>
+        <div class="list-group-item">
+          <form id="user-form" name="user-form" data-ng-submit="add({ name: lsCtrl.name })">
+
+            <input class="form-control" type="text" data-ng-model="lsCtrl.name" id="name" name="name"
+                   placeholder="Enter a name and press enter"/>
+            <input type="submit" class="hidden"/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+<pre><code>
+angular.module('localStorage-example', ['js-data'])
+  .factory('store', function () {
+    var store = new JSData.DS();
+
+    store.registerAdapter('localstorage', new DSLocalStorageAdapter(), { default: true });
+
+    return store;
+  })
+  .factory('User', function (store) {
+    return store.defineResource('user');
+  })
+  .controller('localStorageCtrl', function ($scope, $timeout, User) {
+    var lsCtrl = this;
+
+    User.findAll().then(function (users) {
+      $scope.users = users;
+    });
+
+    User.bindAll({}, $scope, 'users');
+
+    $scope.add = function (user) {
+      return User.create(user).then(function () {
+        lsCtrl.name = '';
+      });
+    };
+
+    $scope.remove = function (user) {
+      return User.destroy(user.id);
+    };
+  });
+</code></pre>
+  </div>
+<pre><code data-ng-non-bindable>
+&lt;div class="list-group"&gt;
+  &lt;div class="list-group-item" data-ng-repeat="user in users track by user.id"&gt;
+    &lt;div class="pull-right"&gt;
+      &lt;button class="btn btn-xs btn-danger" data-ng-click="remove(user)"&gt;
+        Delete
+      &lt;/button&gt;
+    &lt;/div&gt;
+    {{ user.id }}: {{ user.name }}
+  &lt;/div&gt;
+  &lt;div class="list-group-item"&gt;
+    &lt;form id="user-form" name="user-form" data-ng-submit="add({ name: lsCtrl.name })"&gt;
+
+      &lt;input class="form-control" type="text" data-ng-model="lsCtrl.name" id="name" name="name"
+             placeholder="Enter a name and press enter"/&gt;
+      &lt;input type="submit" class="hidden"/&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+</div>
+</body>
+</html>

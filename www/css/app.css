@@ -1,0 +1,47 @@
+.html-back{
+    background : #eee url("http://placehold.it/400x300/eee/666&text=HTML") no-repeat center;
+
+}
+.css-back{
+    background : #eee url("http://placehold.it/400x300/eee/666&text=CSS") no-repeat center;
+
+}
+.js-back{
+    background : #eee url("http://placehold.it/400x300/eee/666&text=JS") no-repeat center;
+}
+
+.glyphicon-chevron-left,
+.glyphicon-chevron-right,
+.glyphicon-chevron-up,
+.glyphicon-chevron-down{
+    color: #aaa;
+}
+
+hr.home-separator {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-color: #EEEEEE;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc);
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
+}
+
+.navbar-brand,
+.navbar-nav > li > a {
+    line-height: 64px;
+    height: 64px;
+    padding-top: 0;
+}
+
+#dynamic-editor {
+    margin: 0;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+}

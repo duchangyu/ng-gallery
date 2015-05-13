@@ -1,0 +1,22 @@
+{
+  "name": "dragula.js",
+  "version": "1.5.1",
+  "description": "Drag and drop so simple it hurts",
+  "main": "dist/dragula.js",
+  "ignore": [],
+  "homepage": "https://github.com/bevacqua/dragula",
+  "authors": [
+    "Nicolas Bevacqua <nicolasbevacqua@gmail.com>"
+  ],
+  "license": "MIT",
+  "_release": "1.5.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.1",
+    "commit": "e3195559670e61878b2ddb5e7eb9a680eecd7a89"
+  },
+  "_source": "git://github.com/bevacqua/dragula.git",
+  "_target": "~1.5.1",
+  "_originalSource": "dragula.js",
+  "_direct": true
+}

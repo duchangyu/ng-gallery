@@ -1,0 +1,63 @@
+<nav class="navbar navbar-default" ng-controller="Autodesk.ADN.AngularView.Navbar.ViewerNavbar.Controller">
+    <div class="container-fluid" style="height: 50px; padding: 5px;">
+
+        <div class="navbar-header">
+            <button type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#viewer-navbar">
+
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="viewer-navbar">
+
+            <ul class="nav navbar-nav">
+            </ul>
+
+          <div class="row">
+
+            <div class="col-sm-5">
+
+              <button type="button"
+                      class="btn btn-default"
+                      ng-model="selectedItems"
+                      data-html="1"
+                      ng-options="item.value as item.label for item in items"
+                      data-multiple="1"
+                      data-animation="am-flip-x"
+                      bs-select
+                      style="max-width: 300px">
+
+                  <span class="caret"></span>
+
+              </button>
+
+              <button type="button"
+                      class="btn btn-default"
+                      ng-model="selectedLayoutMode"
+                      data-html="1"
+                      ng-options="mode.value as mode.label for mode in modes"
+                      data-animation="am-flip-x"
+                      bs-select
+                      ng-disabled="modeDisabled">
+
+                  <span class="caret"></span>
+
+              </button>
+
+            </div>
+
+            <div class="col-sm-2">
+              <input type="text" ng-model="searchInput" class="form-control" placeholder="Search by property ..."/>
+            </div>
+
+          </div>
+        </div>
+    </div>
+</nav>

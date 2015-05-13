@@ -1,0 +1,16 @@
+
+<div ng-controller="Autodesk.ADN.AngularView.Control.Treeview.Controller">
+
+    <br>
+
+    <treecontrol class="tree-classic"
+                 tree-model="treeNodes"
+                 options="treeOptions"
+                 expanded-nodes="expandedNodes"
+                 on-selection="onNodeSelected(node, selected)">
+
+        {{node.name}}
+
+    </treecontrol>
+
+</div>

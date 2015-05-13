@@ -1,0 +1,1620 @@
+#gallery-home {
+  /*!
+ * Maria Theme
+ */
+  /* Form */
+  /*Form*/
+  /*Special Buttons*/
+  /* Dropdown */
+  /*Toggle*/
+  /*Side Nav*/
+  /*Cards My Apps*/
+  /*Header animation*/
+  /*Content animation*/
+  /*Modal*/
+  /*Tooltip*/
+  /* API Detail Docs Section*/
+  /*Home Page General*/
+  /*Home Page Section 1*/
+  /*Home Page Section 2&4*/
+  /*Home Page Section 3*/
+  /*Home Page Section 5*/
+  /*Home Media Queries*/
+  /*@media (max-width: 600px) {
+	.app-content-header.home-header .panel-title {
+	font-size: 26px;
+	}
+  
+  
+  .app-panel-home.app-panel-side .app-panel-text,
+  .app-panel-home.app-panel-centered .app-panel-text {
+	padding: 20px 0 0 0;
+  }
+}*/
+  /*Admin Table*/
+  /*Pagination*/
+  /*Progress Bar*/
+}
+#gallery-home label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: normal;
+  font-size: 16px;
+  color: #333;
+}
+#gallery-home .form-horizontal .control-label {
+  padding-top: 7px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: normal;
+}
+#gallery-home .content-form .form-control-wrapper {
+  margin-bottom: 0;
+}
+#gallery-home .form-control {
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143em;
+  color: #333;
+  background-color: #fff;
+  background-image: none;
+  border: 2px solid #ccc;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none;
+}
+#gallery-home .form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+@media (max-width: 768px) {
+  #gallery-home .form-control {
+    font-size: 13px;
+  }
+}
+#gallery-home .content-form .btn-default {
+  margin: 0 0 0 0;
+}
+#gallery-home .form-control.form-help-text {
+  font-style: italic;
+  color: #999;
+}
+#gallery-home .form-control.form-error-text {
+  border: 2px solid #ff5722;
+}
+#gallery-home .form-group.check-group {
+  margin: 0 0 20px;
+  background: #f4f4f4;
+  padding: 20px 0;
+}
+#gallery-home .error-text {
+  color: #ff5722;
+  margin-left: -10px;
+}
+@media (max-width: 1199px) {
+  #gallery-home .error-text {
+    margin: 10px 0 0 0;
+  }
+}
+#gallery-home .text-warning {
+  color: #ff5722;
+}
+#gallery-home .label-primary {
+  background-color: #00Bc8D;
+}
+#gallery-home .mandatory-label {
+  color: #0696d7;
+  font-weight: 600;
+  font-size: 16px;
+  margin-right: 2px;
+}
+#gallery-home .form-horizontal .app-control-label,
+#gallery-home .app-control-label {
+  padding-top: 7px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: 600;
+}
+#gallery-home .content-form .row-content h5 {
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 0;
+}
+#gallery-home .radio label,
+#gallery-home .checkbox label {
+  padding-left: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  #gallery-home label {
+    font-size: 15px;
+  }
+}
+@media (max-width: 485px) {
+  #gallery-home label {
+    font-size: 14px;
+  }
+}
+#gallery-home .btn.btn-next,
+#gallery-home .btn.btn-question-mark,
+#gallery-home .btn.btn-circle {
+  border-radius: 100%;
+  padding: 0;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  height: 40px;
+  width: 40px;
+}
+#gallery-home .btn.btn-next {
+  background: #fff;
+  border: 2px solid #0696d7;
+  color: #0696d7;
+}
+#gallery-home .btn.btn-next:hover {
+  background: #0696d7;
+  border-radius: 100%;
+  border: 2px solid #0696d7;
+  padding: 0;
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+  font-weight: 500;
+}
+#gallery-home .btn.btn-question-mark,
+#gallery-home .btn.btn-question-mark:hover {
+  background: #ff5722;
+  border: 2px solid #ff5722;
+  height: 30px;
+  width: 30px;
+  font-size: 18px;
+  color: #fff;
+  margin-left: 10px;
+}
+#gallery-home .app-btn.btn-circle .bg-icon {
+  margin: 0;
+}
+#gallery-home .app-btn-play {
+  background: #fff;
+  border: 2px solid #0696d7;
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  color: #0696d7;
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 40%;
+  padding: 9px 5px;
+}
+#gallery-home .app-btn-play:hover {
+  background: #fff;
+  border: 2px solid #1858a8;
+  height: 40px;
+  width: 40px;
+  color: #1858a8;
+}
+#gallery-home .app-btn-play .bg-icon {
+  margin: 0;
+}
+#gallery-home .dropdown-menu {
+  position: absolute!important;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff!important;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-top: 5px solid #1858a8!important;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0 5px 5px 0 rgba(102, 102, 102, 0.5) !important;
+  -moz-box-shadow: 0 5px 5px 0 rgba(102, 102, 102, 0.5) !important;
+  -ms-box-shadow: 0 5px 5px 0 rgba(102, 102, 102, 0.5) !important;
+  box-shadow: 0 5px 5px 0 rgba(102, 102, 102, 0.5) !important;
+  opacity: 0.95;
+}
+#gallery-home .navbar-nav.navbar-right .dropdown-menu > li {
+  margin: 0;
+}
+#gallery-home .dropdown-menu > li > a {
+  display: block;
+  padding: 0.625em 20px!important;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143em!important;
+  color: #333!important;
+  white-space: nowrap;
+  margin: 0.625em 0;
+}
+#gallery-home .dropdown-menu > li > a:hover,
+#gallery-home .dropdown-menu > li > a:focus {
+  color: #0696d7!important;
+  background: #eeeeee!important;
+}
+#gallery-home .dropdown-menu > .active > a,
+#gallery-home .dropdown-menu > .active > a:hover,
+#gallery-home .dropdown-menu > .active > a:focus {
+  color: #0696d7!important;
+  background: #eeeeee!important;
+}
+#gallery-home .navbar-nav-mobile .navbar-nav li.open .dropdown-menu,
+#gallery-home .navbar-nav li.open .dropdown-menu,
+#gallery-home .navbar-nav li:hover .dropdown-menu {
+  display: block;
+}
+@media (min-width: 768px) {
+  #gallery-home .dropdown-menu {
+    border-top: none!important;
+  }
+  #gallery-home #sign-in-section .dropdown-menu {
+    width: 100%;
+    border-top: 4px solid #1858a8!important;
+  }
+}
+#gallery-home .app-container .navbar-toggle {
+  position: absolute;
+  right: 20px;
+  padding: 10px 10px;
+  margin-top: 15px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 2px solid #1858a8;
+  border-radius: 0;
+  z-index: 1000;
+}
+#gallery-home .napp-container .navbar-toggle:hover {
+  background-color: #1858a8;
+  border: 2px solid #1858a8;
+}
+#gallery-home .app-container .navbar-toggle .icon-bar {
+  background-color: #1858a8;
+}
+#gallery-home .panel.app-panel-default.app-sidenav-panel {
+  min-width: 257px;
+}
+#gallery-home .app-sidenav-panel .app-sidenav-body {
+  padding: 0;
+}
+#gallery-home .app-sidenav-body .col-lg-12 {
+  padding: 0;
+}
+#gallery-home .app-sidenav-panel .nav-stacked li {
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #ccc;
+}
+#gallery-home .app-sidenav-panel .nav-stacked a {
+  color: #333;
+  font-size: 16px;
+  padding: 20px 20px 15px 20px;
+  border-radius: 0;
+  border-top: 0;
+  height: 60px;
+}
+#gallery-home .nav-pills.app-sidenav > li:hover {
+  background: transparent;
+}
+#gallery-home .nav-pills.app-sidenav > li > a:hover,
+#gallery-home .nav-pills.app-sidenav > li > a:focus,
+#gallery-home .nav-pills.app-sidenav > li.active > a,
+#gallery-home .nav-pills.app-sidenav > li.active > a:hover,
+#gallery-home .nav-pills.app-sidenav > li.active > a:focus,
+#gallery-home .nav-pills.second-level-nav > li > a:hover,
+#gallery-home .nav-pills .second-level-nav > li > a:focus,
+#gallery-home .nav-pills .second-level-nav > li.active > a,
+#gallery-home .nav-pills .second-level-nav > li.active > a:hover,
+#gallery-home .nav-pills .second-level-nav > li.active > a:focus,
+#gallery-home .nav-pills .third-level-nav > li > a:hover,
+#gallery-home .nav-pills .third-level-nav > li > a:focus,
+#gallery-home .nav-pills .third-level-nav > li.active > a,
+#gallery-home .nav-pills .third-level-nav > li.active > a:hover,
+#gallery-home .nav-pills .third-level-nav > li.active > a:focus {
+  color: #0696d7;
+  background: transparent;
+}
+#gallery-home .nav-pills.second-level-nav > li > a:hover,
+#gallery-home .nav-pills .second-level-nav > li > a:focus,
+#gallery-home .nav-pills .second-level-nav > li.active > a,
+#gallery-home .nav-pills .second-level-nav > li.active > a:hover,
+#gallery-home .nav-pills .second-level-nav > li.active > a:focus,
+#gallery-home .nav-pills .third-level-nav > li > a:hover,
+#gallery-home .nav-pills .third-level-nav > li > a:focus,
+#gallery-home .nav-pills .third-level-nav > li.active > a,
+#gallery-home .nav-pills .third-level-nav > li.active > a:hover,
+#gallery-home .nav-pills .third-level-nav > li.active > a:focus {
+  font-weight: 600;
+}
+#gallery-home .app-sidenav-panel .nav-stacked .second-level-nav li,
+#gallery-home .app-sidenav-panel .nav-stacked .third-level-nav li {
+  border-bottom: none;
+}
+#gallery-home .app-sidenav .second-level-nav {
+  padding-left: 30px;
+}
+#gallery-home .app-sidenav .second-level-nav a {
+  border: 0;
+  padding: 15px;
+  height: auto;
+}
+#gallery-home .app-sidenav .second-level-nav li a:hover {
+  color: #0696d7;
+  background: transparent;
+}
+#gallery-home .app-sidenav .third-level-nav {
+  padding-left: 20px;
+}
+#gallery-home .app-sidenav .third-level-nav a {
+  font-size: 14px;
+  padding: 5px 0 5px 25px;
+}
+#gallery-home .app-sidenav .third-level-nav li span.caret {
+  width: 0px;
+  height: 0px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid #1858a8;
+}
+#gallery-home .app-btn.back-to-top-btn {
+  width: calc(24%);
+  margin: 14px 0;
+  padding: 3px 10px;
+  font-size: 14px;
+  height: 35px;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+}
+#gallery-home .app-container .affix {
+  position: fixed;
+  top: 5px;
+  width: 20%;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+@media (max-width: 1199px) {
+  #gallery-home .panel.app-panel-default.app-sidenav-panel {
+    min-width: 215px;
+  }
+}
+@media (max-width: 768px) {
+  #gallery-home .panel.app-panel-default.app-sidenav-panel {
+    display: block;
+    min-height: 69px;
+    z-index: 999;
+  }
+  #gallery-home .app-button-container.mob-app-button-container.back-to-top-container {
+    display: block;
+  }
+}
+#gallery-home .app-cards-body {
+  padding: 30px 0 10px 30px !important;
+}
+#gallery-home .app-card-group {
+  margin-bottom: 200px;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+}
+#gallery-home .app-card-item-cont {
+  padding: 0;
+  float: left;
+  margin: 0 25px 30px 0;
+  height: 190px;
+  position: relative;
+  width: 31%;
+}
+#gallery-home .app-card-item-cont a:hover {
+  text-decoration: none;
+}
+#gallery-home .app-card-item {
+  background: #e6f0f5;
+  border-bottom: 3px solid #bbd7e5;
+  border-right: 3px solid #bbd7e5;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+#gallery-home .app-card-item .app-card-content {
+  position: relative;
+  top: 0;
+}
+#gallery-home .app-card-item.last-child {
+  margin-right: 0;
+}
+#gallery-home .app-card-header {
+  background: #bbbbbb;
+  padding: 15px 20px 10px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+#gallery-home .app-card-header.month-1,
+#gallery-home .app-card-header.month-2 {
+  background: #1858a8;
+}
+#gallery-home .app-card-header.month-3,
+#gallery-home .app-card-header.month-4 {
+  background: #336db5;
+}
+#gallery-home .app-card-header.month-5,
+#gallery-home .app-card-header.month-6 {
+  background: #618ec5;
+}
+#gallery-home .app-card-header.month-7,
+#gallery-home .app-card-header.month-8 {
+  background: #8faed4;
+}
+#gallery-home .app-card-header.month-9,
+#gallery-home .app-card-header.month-10 {
+  background: #bdcee4;
+}
+#gallery-home .app-card-header.month-11,
+#gallery-home .app-card-header.month-12 {
+  background: #cccccc;
+}
+#gallery-home .app-card-header.prev-year {
+  background: transparent;
+  border-bottom: 2px solid #fff;
+}
+#gallery-home .app-date-legend {
+  font-size: 12px;
+  font-weight: normal;
+  color: #fff;
+}
+#gallery-home .app-card-header.prev-year .app-card-title h5 {
+  color: #333;
+}
+#gallery-home .app-card-header.prev-year span {
+  color: #333;
+}
+#gallery-home .app-card-title {
+  height: 29px;
+  width: 100%;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#gallery-home .app-card-title h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5em;
+  margin: 0;
+}
+#gallery-home .app-card-date {
+  display: inline-block;
+}
+#gallery-home .app-card-divider {
+  text-align: center;
+  margin-right: 20px;
+  clear: both;
+}
+#gallery-home .app-card-divider h6 {
+  margin: 0;
+}
+#gallery-home .app-card-divider hr {
+  margin: 5px 0 40px;
+  height: 2px;
+  display: block;
+  background: #eeeeee;
+  border: none;
+}
+#gallery-home .app-card-description {
+  position: relative;
+  color: #666;
+  padding: 20px;
+}
+#gallery-home .app-card-description p {
+  margin: 0;
+}
+#gallery-home .app-badge {
+  padding: 0;
+  display: inline-block;
+}
+#gallery-home .app-card-item .app-badge {
+  float: right;
+}
+#gallery-home .app-badge span {
+  padding: 2px 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background: #ffcc00;
+  width: 85px;
+  border-radius: 2px;
+}
+#gallery-home .app-badge {
+  display: inline-block;
+  margin-left: 10px;
+}
+#gallery-home .app-card-item-hover {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  background: #e6f0f5;
+  border-right: 3px solid #6591a6;
+  border-bottom: 3px solid #6591a6;
+  top: 190px;
+  z-index: 2;
+}
+#gallery-home .app-card-item-cont a:hover {
+  text-decoration: none;
+}
+#gallery-home .app-card-item-hover .app-card-header {
+  background: transparent;
+  height: auto;
+}
+#gallery-home .app-card-item-hover h5 {
+  color: #333;
+  font-weight: 600;
+  margin: 0;
+}
+#gallery-home .app-card-item-hover ul {
+  margin: 0;
+  padding: 0 20px;
+  list-style-type: none;
+  line-height: 1.5em;
+}
+#gallery-home .app-card-item-hover li {
+  color: #333;
+}
+#gallery-home .app-card-item-hover .app-badge {
+  display: inline-block;
+  margin-left: 5px;
+  border-radius: .30em;
+  width: 70px;
+  float: none;
+}
+#gallery-home .app-alert-container {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  display: block;
+  z-index: 1;
+}
+#gallery-home .app-alert {
+  position: relative;
+  top: 0;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 2px;
+  border: none;
+  font-weight: 600;
+  opacity: 0.9;
+  width: 45%;
+  text-align: center;
+}
+#gallery-home .app-alert-success {
+  color: #ffffff;
+  background-color: #87bc40;
+}
+#gallery-home .app-alert-danger {
+  color: #FF5722;
+  background-color: #FFCCBF;
+}
+#gallery-home .app-card-item .app-card-header.st-def {
+  -webkit-transition: height 0.1s;
+  -moz-transition: height 0.1s;
+  -o-transition: height 0.1s;
+  transition: height 0.1s;
+}
+#gallery-home .app-card-item:hover .app-card-header.st-def {
+  height: 50px;
+}
+#gallery-home .app-card-item .app-card-date.st-def,
+#gallery-home .app-card-item .app-row-badge.st-def {
+  -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  -o-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
+#gallery-home .app-card-item:hover .app-card-date.st-def,
+#gallery-home .app-card-item:hover .app-row-badge.st-def {
+  opacity: 0;
+}
+#gallery-home .app-card-item .app-card-content.st-def {
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
+}
+#gallery-home .app-card-item:hover .app-card-content.st-def {
+  top: -80px;
+}
+#gallery-home .app-card-item .app-card-item-hover {
+  width: 101%;
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
+}
+#gallery-home .app-card-item:hover .app-card-item-hover {
+  -webkit-transition: top 0.3s;
+  -moz-transition: top 0.3s;
+  -o-transition: top 0.3s;
+  transition: top 0.3s;
+  top: 50px;
+}
+#gallery-home .no-app-card-item {
+  border: dashed 2px #eee;
+  min-height: 200px;
+  padding: 0 20px;
+  margin: 0 20px 20px 0;
+  text-align: center;
+}
+#gallery-home .no-app-card-item .app-card-content {
+  padding: 64px 0;
+}
+#gallery-home .no-app-card-title h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.5em;
+  margin: 0 0 10px;
+}
+@media (min-width: 1200px) {
+  #gallery-home .app-card-item-hover {
+    width: 100%;
+  }
+}
+@media (max-width: 1199px) {
+  #gallery-home .app-cards-body {
+    padding: 30px 0 10px 24px;
+  }
+  #gallery-home .app-card-item-cont {
+    width: 31%;
+    margin: 0 20px 30px 0;
+  }
+  #gallery-home .app-card-item-hover {
+    width: 102%;
+    height: 101%;
+  }
+  #gallery-home .app-card-item-hover ul {
+    line-height: 1.8em;
+    font-size: 13px;
+    max-height: 75%;
+    overflow-y: scroll;
+  }
+}
+@media (max-width: 991px) {
+  #gallery-home .app-card-item-cont {
+    width: calc(30%);
+  }
+  #gallery-home .app-card-item-hover {
+    width: 101%;
+    height: 101%;
+  }
+}
+@media (max-width: 646px) {
+  #gallery-home .app-card-item-cont {
+    width: 45%;
+  }
+  #gallery-home .app-card-item-hover {
+    width: 101%;
+    height: 101%;
+  }
+  #gallery-home .app-card-header {
+    height: auto;
+  }
+  #gallery-home .app-card-title h5 {
+    max-height: 50px;
+    overflow: hidden;
+  }
+  #gallery-home .app-card-date {
+    display: block;
+  }
+  #gallery-home .app-badge {
+    display: inline-block;
+    float: none;
+    margin: 10px 0 0;
+  }
+  #gallery-home .app-card-item .app-badge {
+    float: none;
+    margin: 0;
+  }
+}
+@media (max-width: 582px) {
+  #gallery-home .col-xs-12 {
+    width: 100%;
+  }
+  #gallery-home .app-card-item-cont {
+    width: calc(80%);
+  }
+  #gallery-home .app-card-item-hover {
+    width: 101%;
+  }
+  #gallery-home .app-card-date {
+    display: inline-block;
+  }
+  #gallery-home .app-badge {
+    display: inline-block;
+    float: none;
+    margin: 10px 0 0 0;
+  }
+  #gallery-home .app-card-item-hover ul {
+    max-height: 70%;
+    overflow-y: scroll;
+  }
+  #gallery-home .app-card-item .app-badge {
+    float: right;
+  }
+  #gallery-home .row-content p {
+    display: none;
+  }
+}
+#gallery-home .modal.app-modal {
+  position: absolute;
+}
+#gallery-home .app-modal .vertical-alignment-helper {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+#gallery-home .app-modal .vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+}
+#gallery-home .app-modal .modal-content {
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width: inherit;
+  height: inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+}
+#gallery-home .app-modal .modal-backdrop {
+  z-index: 0;
+  background-color: #333;
+  height: 100%!important;
+}
+#gallery-home .app-modal .modal-content {
+  position: relative;
+  background-color: #eee;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -ms-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -ms-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
+#gallery-home .app-modal .modal-header,
+#gallery-home .app-modal .modal-body,
+#gallery-home .app-modal .modal-footer {
+  text-align: center;
+}
+#gallery-home .app-modal .modal-header {
+  min-height: 16.42857143px;
+  padding: 20px 0 0;
+  border-bottom: 0;
+}
+#gallery-home .app-modal .modal-title {
+  font-weight: 600;
+}
+#gallery-home .app-modal .modal-body {
+  position: relative;
+  padding: 15px;
+  font-weight: normal;
+  font-size: 14;
+  color: #666;
+}
+#gallery-home .app-modal .modal-footer {
+  padding: 10px 20px 30px;
+  border-top: 0;
+}
+#gallery-home .app-modal .app-btn-default {
+  color: #1858a8;
+}
+#gallery-home .app-modal .app-btn-default:hover {
+  color: #fff;
+}
+#gallery-home .app-tooltip .tooltip {
+  opacity: 1;
+}
+#gallery-home .app-tooltip .tooltip-inner {
+  min-width: 125px;
+  max-width: 500px;
+  padding: 10px;
+  color: #333;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  text-align: center;
+  text-decoration: none;
+  background: #eee;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -ms-background-clip: padding-box;
+  background-clip: padding-box;
+  border-bottom: 4px solid #1858a8;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-radius: 0;
+  -webkit-box-shadow: 2px 1px 3px 0 rgba(53, 55, 57, 0.5);
+  -moz-box-shadow: 2px 1px 3px 0 rgba(53, 55, 57, 0.5);
+  -ms-box-shadow: 2px 1px 3px 0 rgba(53, 55, 57, 0.5);
+  box-shadow: 2px 1px 3px 0 rgba(53, 55, 57, 0.5);
+}
+#gallery-home .app-tooltip .tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px 5px 0;
+  border-top-color: #1858a8;
+}
+#gallery-home .app-tooltip .tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+#gallery-home .app-api-section .app-api-section-heading {
+  background: transparent;
+  color: #1858a8;
+}
+#gallery-home .app-api-section .app-api-section-heading h2 {
+  border-bottom: 2px solid #6fbadc;
+  margin: 60px 0 0;
+  padding-bottom: 10px;
+  font-size: 24px;
+  font-weight: normal;
+}
+#gallery-home .app-api-section .app-api-section-heading h2.first-child {
+  margin: 0 0 30px;
+}
+#gallery-home .app-api-section .app-api-section-heading h3 {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 60px 0 20px;
+  border-bottom: none;
+}
+#gallery-home .app-api-section h5 {
+  font-weight: 600;
+  color: #333;
+  margin: 30px 0 15px;
+}
+#gallery-home .app-api-section .app-api-picture {
+  padding: 0;
+  background: transparent;
+}
+#gallery-home .app-api-section .app-api-picture a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#gallery-home .app-api-section .app-api-picture img {
+  width: 100%;
+}
+#gallery-home .app-api-section .app-api-video {
+  padding: 10px;
+}
+#gallery-home .app-api-section .app-api-screenshoot {
+  background: transparent;
+  margin-bottom: 20px;
+}
+#gallery-home .app-api-section .app-api-screenshoot img {
+  border: 1px solid #ccc;
+}
+#gallery-home .app-api-section .app-api-browser {
+  background: #cdcccc;
+  padding: 10px;
+  margin-right: 10px;
+}
+#gallery-home .app-api-section a.try-in-console-lnk {
+  font-size: 14px;
+  margin-left: 20px;
+}
+#gallery-home .app-api-doc p {
+  line-height: 1.7em;
+}
+#gallery-home .app-api-doc ul {
+  margin: 15px 0;
+}
+#gallery-home .app-api-doc li {
+  margin: 10px 0;
+}
+#gallery-home .panel.app-panel-home {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+#gallery-home .app-panel-home .panel-title {
+  font-size: 30px;
+  color: #ffffff;
+  line-height: 1.5em;
+  font-weight: lighter;
+  padding: 50px 0;
+}
+#gallery-home .app-panel-home .app-panel-text p {
+  font-size: 16px;
+  color: #666;
+  padding: 20px;
+  margin: 0;
+}
+#gallery-home .app-panel-home .app-panel-btn {
+  padding: 20px 0;
+}
+#gallery-home .app-panel-home .app-panel-btn .btn {
+  margin-bottom: 20px;
+}
+#gallery-home .panel-top {
+  background: url("../img/View&Data_ScreenShot2.jpg") transparent;
+  background-size: cover;
+  height: 605px;
+  top: 64px;
+  padding-top: 64px;
+}
+#gallery-home .panel-top .panel-top-title {
+  padding-top: 100px;
+}
+#gallery-home .panel-top h1 {
+  margin: 0 0 20px;
+  font-weight: lighter;
+  color: #333;
+}
+#gallery-home .panel-top h4 {
+  line-height: 1.5em;
+  margin: 0 0 20px;
+}
+#gallery-home .panel-top .app-btn {
+  margin: 0;
+}
+#gallery-home .app-panel-video {
+  position: relative;
+}
+#gallery-home #iphone-video {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  -o-transform: translateY(0%);
+  transform: translateY(0%);
+  left: 20%;
+  width: 600px;
+  -webkit-transition: all 0.4s ease-in;
+  -moz-transition: all 0.4s ease-in;
+  -ms-transition: all 0.4s ease-in;
+  -o-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+#gallery-home .app-panel-video video.promo {
+  position: absolute;
+  top: 25px;
+  left: 89px;
+  width: 423px;
+  height: 230px;
+}
+#gallery-home #body-home .page-footer {
+  margin: 0;
+}
+#gallery-home .panel.app-panel-home.app-panel-3groups {
+  text-align: center;
+  padding-bottom: 30px;
+}
+#gallery-home #AppsAutodeskPanel {
+  background: url("../img/section4.svg") 76% 0;
+  background-size: cover;
+}
+#gallery-home .app-panel-item-cont {
+  position: relative;
+  margin-bottom: 50px;
+  padding-left: 0;
+}
+#gallery-home #AppsAutodeskPanel .app-panel-item {
+  background: #f4f4f4;
+  position: relative;
+}
+#gallery-home #AppsAutodeskPanel .app-panel-item a:hover {
+  text-decoration: none;
+}
+#gallery-home #AppsAutodeskPanel .app-panel-image {
+  background: #f4f4f4;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+#gallery-home .app-panel-image img {
+  max-height: 200px;
+  margin: 0 auto;
+}
+#gallery-home #AppsAutodeskPanel .app-panel-text {
+  background: #ffffff;
+  height: 180px;
+  padding: 20px;
+}
+#gallery-home #AppsAutodeskPanel .app-panel-text h3 {
+  margin: 0;
+  color: #0696d7;
+}
+#gallery-home #AppsAutodeskPanel .app-panel-text p {
+  border-bottom: none;
+  padding: 20px;
+  margin: 0;
+}
+#gallery-home .app-panel-item .app-panel-item-hover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding: 50% 0;
+  top: 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-backface-visibility: hidden;
+}
+#gallery-home .app-panel-item:hover .app-panel-item-hover {
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -o-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+  cursor: pointer;
+}
+#gallery-home #AutodeskAPI {
+  background: url("../img/section2.png") 0 0;
+}
+#gallery-home #AutodeskAPI .app-panel-item {
+  height: 440px;
+  overflow: hidden;
+  position: relative;
+  padding: 0 20px 30px;
+  background: #ffffff;
+  color: #666;
+}
+#gallery-home #AutodeskAPI .app-panel-text {
+  padding: 0;
+}
+#gallery-home #AutodeskAPI .app-panel-text img {
+  height: 160px;
+  display: block;
+  width: 100%;
+  background: #f4f4f4;
+  padding-bottom: 15px;
+  margin-top: 20px;
+}
+#gallery-home #AutodeskAPI h4 {
+  padding: 20px 0;
+  background: #ffffff;
+  display: block;
+  color: #666;
+  vertical-align: middle;
+  line-height: 1.5em;
+  margin: 0;
+  border-bottom: 3px solid #9fc0d0;
+}
+#gallery-home #AutodeskAPI h4 span {
+  font-weight: bold;
+  display: block;
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #0696d7;
+}
+#gallery-home #AutodeskAPI a {
+  color: #fff;
+}
+#gallery-home #AutodeskAPIBenefits {
+  background: url("../img/entrepreneur_Test_v8.jpg") 0% 40%;
+  height: 638px;
+  padding: 10% 0;
+}
+#gallery-home #AutodeskAPIBenefits .app-panel-item {
+  padding: 20px;
+  color: #fff;
+}
+#gallery-home #AutodeskAPIBenefits .app-panel-item .app-panel-text {
+  text-align: center;
+  padding: 0 45px;
+  margin-top: 0;
+}
+#gallery-home #AutodeskAPIBenefits .app-panel-item .app-panel-text img.circle {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+#gallery-home #AutodeskAPIBenefits h3 {
+  margin-top: 10px;
+  margin-right: 0;
+  margin-left: 0;
+  margin-bottom: 20px;
+  color: #ffffff;
+  line-height: 1.5em;
+  font-weight: lighter;
+  font-size: xx-large;
+}
+#gallery-home #AutodeskAPIBenefits .app-panel-item .app-panel-text p {
+  color: #ffffff;
+  font-size: medium;
+  line-height: 0%;
+}
+#gallery-home #Support {
+  background: #9fc0d0;
+  padding: 0 0 50px 0;
+}
+#gallery-home #Support .panel-title {
+  padding-bottom: 0px;
+}
+#gallery-home #Support p,
+#gallery-home #Support a.support-link {
+  color: #fff;
+}
+#gallery-home .support-icon .app-btn.btn-circle .bg-icon {
+  font-size: 40px;
+  padding: 10px 0;
+}
+#gallery-home .support-icon .btn-circle,
+#gallery-home .support-icon .btn-circle:hover {
+  background: #fff;
+  border: none;
+  margin: 20px 0;
+  font-size: 50px;
+  height: 90px;
+  width: 90px;
+  color: #0696d7;
+  border: 2px solid #ffffff;
+  padding: 5px;
+}
+#gallery-home .support-icon .btn-circle:hover {
+  border: 2px solid #fff;
+}
+#gallery-home .supportbb .support-icon .btn-circle,
+#gallery-home .supportbb .support-icon .btn-circle:hover {
+  background: #fff;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 50px;
+  height: 90px;
+  width: 90px;
+  color: #0696d7;
+  border: 2px solid #9fc0d0;
+}
+#gallery-home .support-icon .btn-circle:hover {
+  border: 2px solid #fff;
+}
+@media (max-width: 1199px) {
+  #gallery-home .panel-top {
+    height: 470px;
+  }
+  #gallery-home #iphone-video {
+    left: 0%;
+    width: 460px;
+  }
+  #gallery-home .app-panel-video video.promo {
+    top: -7px;
+    left: 69px;
+    width: 324px;
+  }
+  #gallery-home #AppsAutodeskPanel {
+    background: url("../img/section4.svg") 42% 0;
+    background-size: cover;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-text {
+    height: 230px;
+  }
+  #gallery-home #AutodeskAPIBenefits {
+    padding: 7% 0;
+  }
+  #gallery-home #AutodeskAPI h4 {
+    padding: 16px;
+    font-size: 16px;
+  }
+  #gallery-home #AutodeskAPI h4 span {
+    font-size: 24px;
+  }
+}
+@media (max-width: 992px) {
+  #gallery-home .panel-top {
+    height: 470px;
+  }
+  #gallery-home #iphone-video {
+    width: 350px;
+  }
+  #gallery-home .app-panel-video video.promo {
+    top: -38px;
+    left: 63px;
+    width: 226px;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-image {
+    margin-top: 0;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-item {
+    margin-bottom: 20px;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-item-cont {
+    margin-bottom: 30px;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-item .app-panel-item-hover {
+    padding: 60% 0;
+  }
+  #gallery-home .app-panel-home.app-panel-3groups .app-panel-text {
+    padding: 10px 0;
+    text-align: center;
+  }
+  #gallery-home .app-panel-home.app-panel-3groups .app-panel-text p {
+    padding: 10px 0;
+  }
+  #gallery-home #AutodeskAPIBenefits {
+    height: 500px;
+    padding: 4% 0;
+  }
+  #gallery-home #AutodeskAPI h4 {
+    height: auto;
+    padding: 10px;
+  }
+  #gallery-home #AutodeskAPI .app-panel-item {
+    height: auto;
+  }
+  #gallery-home .app-panel-item-cont {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 767px) {
+  #gallery-home .panel-top {
+    padding: 133px 0 40px;
+    text-align: center;
+    height: auto;
+  }
+  #gallery-home .panel-top .panel-top-title {
+    padding-top: 50px;
+  }
+  #gallery-home .panel-top h1 {
+    font-size: 28px;
+  }
+  #gallery-home .panel-top h4 {
+    font-size: 16px;
+  }
+  #gallery-home #iphone-video {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  #gallery-home .app-panel-video video.promo {
+    top: 17%;
+    left: 15%;
+    width: 70%;
+    position: absolute;
+    height: auto;
+  }
+  #gallery-home .app-panel-home {
+    text-align: center;
+    padding: 0;
+  }
+  #gallery-home .app-panel-home .panel-title {
+    font-size: 24px;
+    text-align: center;
+    padding: 30px 0;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-item-cont {
+    margin-bottom: 0;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-text {
+    height: auto;
+  }
+  #gallery-home #AppsAutodeskPanel .app-panel-text h3 {
+    font-size: 20px;
+  }
+  #gallery-home .app-panel-home .app-panel-text p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+  #gallery-home #AutodeskAPIBenefits {
+    height: auto;
+  }
+  #gallery-home #AutodeskAPIBenefits .app-panel-item {
+    margin: 30px 0 0;
+  }
+  #gallery-home #AutodeskAPIBenefits h3 {
+    font-size: 20px;
+  }
+  #gallery-home #AutodeskAPIBenefits .app-panel-item .app-panel-text {
+    padding: 0;
+  }
+  #gallery-home #AutodeskAPI h4 {
+    padding: 15px;
+    font-size: 14px;
+    text-align: center;
+  }
+  #gallery-home #Support .panel-title {
+    padding-bottom: 50px;
+  }
+  #gallery-home .panel-top button,
+  #gallery-home .app-panel-home .app-panel-btn .btn {
+    width: 100%;
+    margin-left: 0;
+  }
+  #gallery-home .app-panel-home.app-panel-3groups .app-panel-image img {
+    max-height: 120px;
+  }
+  #gallery-home .app-panel-item-cont {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+#gallery-home caption {
+  text-align: left;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+#gallery-home .app-table-body {
+  padding: 30px !important;
+}
+#gallery-home .app-table-body .app-table-filter {
+  background: #e6f0f5;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+#gallery-home .app-table-filter .filter-group {
+  padding: 0;
+  margin: 0px;
+}
+#gallery-home .app-table-filter .filter-control {
+  padding: 0;
+  margin-bottom: 10px;
+}
+#gallery-home .filter-group.search-filter-group {
+  margin-top: 25px;
+}
+#gallery-home .app-panel-default .app-table-filter .panel-title-text {
+  text-align: left;
+  padding: 0;
+}
+#gallery-home .app-table-body .app-button-container {
+  margin: 0 10px 15px 0;
+}
+#gallery-home .app-table-body .app-button-container p {
+  display: inline-block;
+  margin-right: 10px;
+}
+#gallery-home .app-table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 3px solid #bbd7e5;
+  font-size: 16px;
+  font-weight: 600;
+  background: #e6f0f5;
+  color: #333;
+  padding: 10px;
+  position: relative;
+}
+#gallery-home .app-table > thead > tr > th > .checkbox {
+  position: absolute;
+  top: 0;
+  margin: 5px 10px 15px 5px;
+}
+#gallery-home .app-table > tbody > tr > td > .checkbox {
+  margin: 5px 10px 15px 10px;
+}
+#gallery-home .app-table > thead > tr > th.app-th-ordered {
+  cursor: pointer;
+}
+#gallery-home .app-table > thead > tr > th > i {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #6591a6;
+}
+#gallery-home .app-table > tbody > tr > td,
+#gallery-home .app-table > tfoot > tr > td {
+  padding: 5px;
+  line-height: 1.4;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+#gallery-home .app-table td .app-badge {
+  margin: 0;
+}
+#gallery-home .app-badge-approved span {
+  background: #87bc40;
+}
+#gallery-home .app-badge-waitlisted span {
+  background: #9fc0d0;
+}
+#gallery-home .app-badge-suspended span {
+  background: #ff6a3b;
+}
+#gallery-home .app-table .app-action-cell button {
+  width: 115px;
+}
+#gallery-home .app-table-detail > thead > tr > th {
+  background: transparent;
+}
+#gallery-home .app-table-detail > thead > tr > td,
+#gallery-home .app-table-detail > tbody > tr > td {
+  padding: 10px 30px;
+  background: #f4f4f4;
+  border: none;
+}
+#gallery-home .app-table-detail > tbody > tr > td.label-table {
+  font-weight: 600;
+  width: 20%;
+  color: #333333;
+  background: #e6f0f5;
+  padding: 10px 20px;
+}
+#gallery-home .pagination-block {
+  padding: 0;
+}
+#gallery-home .pagination {
+  float: left;
+  padding: 0;
+  margin: 0 20px 0 0;
+}
+#gallery-home .pagination > ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+#gallery-home .pagination > ul > li {
+  display: inline;
+}
+#gallery-home .pagination > ul > li:first-child > a,
+#gallery-home .pagination > ul > li:last-child > a {
+  border-radius: 0;
+}
+#gallery-home .pagination > ul > li > a {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #0696d7;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+#gallery-home .pagination > ul > li > a:hover,
+#gallery-home .pagination > ul > li > a:focus {
+  background: #eee;
+}
+#gallery-home .pagination ul li.active a,
+#gallery-home .pagination ul li.active span {
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  background-color: #1858a8;
+}
+#gallery-home .pagination ul > .disabled > span,
+#gallery-home .pagination ul > .disabled > a,
+#gallery-home .pagination ul > .disabled > a:hover,
+#gallery-home .pagination ul > .disabled > a:focus {
+  color: #999999;
+  background-color: transparent;
+  cursor: default;
+}
+#gallery-home .pagination-info {
+  display: block;
+  float: left;
+  margin: 5px 0 0 0;
+}
+#gallery-home .pagination-info.muted {
+  color: #999999;
+}
+#gallery-home .form-control-wrapper.form-inline-block {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  padding: 0;
+}
+#gallery-home .filter-control .form-control-wrapper.form-inline-block {
+  right: 0;
+}
+#gallery-home .form-control-wrapper.form-inline-block button,
+#gallery-home .form-control-wrapper.form-inline-block ul {
+  font-size: 12px;
+}
+#gallery-home .app-table-body .display-filter {
+  padding: 0;
+  text-align: right;
+  position: relative;
+}
+#gallery-home .app-table-body .display-filter label {
+  display: block;
+  float: left;
+}
+#gallery-home .app-progress {
+  margin: 0;
+  border-radius: 0;
+}
+#gallery-home .app-progress-bar {
+  background-color: #0696d7;
+}
+@media screen and (max-width: 1199px) {
+  #gallery-home .app-table > thead > tr > th {
+    font-size: 14px;
+    padding: 10px;
+  }
+  #gallery-home .app-table > thead > tr > th > .checkbox {
+    margin: 5px 7px;
+  }
+  #gallery-home .app-table > tbody > tr > td,
+  #gallery-home .app-table > tfoot > tr > td {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 992px) {
+  #gallery-home .table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: none;
+  }
+  #gallery-home .app-table > thead > tr > th {
+    font-size: 12px;
+    padding: 5px;
+  }
+  #gallery-home .app-table > thead > tr > th > .checkbox {
+    margin: 8px 10px;
+  }
+  #gallery-home .app-btn-xs,
+  #gallery-home .app-btn-group-xs > .btn {
+    margin: 0;
+  }
+  #gallery-home .content-form .form-control-wrapper {
+    padding-left: 0;
+  }
+  #gallery-home .app-table-body .display-filter {
+    margin-top: 20px;
+    text-align: left;
+  }
+}
+@media screen and (max-width: 768px) {
+  #gallery-home .app-table > thead > tr > th > .checkbox {
+    margin: 0px 10px;
+  }
+}

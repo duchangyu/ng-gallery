@@ -1,0 +1,58 @@
+
+<div ui-layout options="{ flow:'row', dividerSize: 8}" style="top:64px; bottom:0px">
+
+    <div ui-layout-container>
+
+        <div ui-layout="{flow : 'column', dividerSize: 8}" >
+
+            <div ui-layout-container size="62%" id="viewer-extension-editor-container">
+
+                <adn-viewer-container
+                    url="{{tokenUrl}}"
+                    urn="{{docUrn}}"
+                    config="{{viewerContainerConfig}}"
+                    on-viewable-path="onViewablePath(pathInfoCollection)">
+
+                    <adn-viewer
+                        id="viewer-extension-editor"
+                        path="{{selectedPath}}"
+                        config="{{viewerConfig}}"
+                        on-destroy="onDestroy(viewer)"
+                        on-viewer-initialized="onViewerInitialized(viewer)">
+                    </adn-viewer>
+
+                </adn-viewer-container>
+
+            </div>
+
+            <div ui-layout-container size="38%" style="background-color: #DBDBDB; overflow: hidden">
+
+                <div ui-layout options="{ flow:'row', dividerSize: 0.01}">
+
+                    <div ui-layout-container size="32px" min-size="32px" max-size="32px">
+
+                        <div class="input-group input-group-sm" style="width:100%; background-color: #FFFFFF;">
+
+                            <button type="button" class="btn btn-default btn-sm" ng-click="onResetEditor()">
+                                <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reset
+                            </button>
+                            &nbsp;
+                            <button type="button" class="btn btn-default btn-sm" ng-click="onLoadExtension()">
+                                <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span> Load
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div ui-layout-container>
+                        <pre id="dynamic-editor">
+
+                        </pre>
+                    </div>
+
+                </div>
+           </div>
+        </div>
+    </div>
+</div>

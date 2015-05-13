@@ -1,0 +1,171 @@
+
+<div id="gallery-home" style="background-color: rgb(238, 238, 238);">
+
+    <!-- Banner================================================== -->
+
+    <div class="clearfix">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="page-header content-header app-content-header api-detail-header view-and-data-api">
+                    <div class="container app-container">
+                        <div class="col-xs-12 col-sm-6 col-md-9 col-lg-9 app-title-container">
+                            <h1 id="view-and-data-title">View & Data Gallery</h1>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Content================================================== -->
+
+    <div class="content-form app-content-form clearfix">
+        <div class="container app-container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                    <div id="nav-parent" class="page-header hidden-xs">
+                            <div data-spy="affix" data-offset-top="200" class="panel panel-default app-panel-default app-sidenav-panel">
+                                <div class="navbar-collapse collapse navbar-responsive-collapse panel-body app-panel-body app-sidenav-body" role="complementary">
+                                    <div class="col-lg-12">
+                                        <ul class="nav nav-pills nav-stacked app-sidenav">
+                                            <li role="presentation" class="active">
+                                                <a href="#home" class="first-child">
+                                                    Home
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#viewer" class="first-child">
+                                                    Viewer
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#upload" class="first-child">
+                                                    Upload
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#extensions" class="first-child">
+                                                    Extensions
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#extension-editor" class="first-child">
+                                                    Extension Editor
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div id="nav-parent-mobile" class="page-header hidden-sm hidden-md hidden-lg">
+                            <div data-spy="affix" data-offset-top="150" class="panel panel-default app-panel-default app-sidenav-panel">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="navbar-collapse collapse navbar-responsive-collapse panel-body app-panel-body app-sidenav-body" role="complementary">
+                                    <div class="col-lg-12">
+                                        <ul class="nav nav-pills nav-stacked app-sidenav">
+                                            <li role="presentation" class="active">
+                                                <a href="#home" class="first-child" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                                    Home
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#viewer" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                                    Viewer
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+                    <div class="page-header">
+                        <div class="panel panel-default app-panel-default" style="padding: 0">
+                            <div class="app-api-doc app-panel-body panel-body" style="padding: 0">
+
+                                <!--=================== Search Group ===================-->
+                                <div class="input-group" style="width:100%; border: 3px solid #E1E1E1;">
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Search Models ..."
+                                           aria-describedby="basic-addon1"
+                                           ng-model="modelsFilterValue">
+                                </div>
+
+                                <!--=================== Model List ===================-->
+                                <ul id="modelList" class="col-lg-12" style="overflow: auto; height: 800px; margin:0;">
+                                    <li ng-repeat="model in models | filter: searchFilter | orderBy:'name'" style="list-style-type: none; margin:0;">
+
+                                        <div class="row" style="{{['background-color:#FFFFFF;padding: 10px', 'background-color:rgba(162, 201, 134, 0.41);padding: 10px'][$index %2]}}">
+                                            <div class="col-md-3">
+                                                <img class="img-responsive"
+                                                     ng-src={{model.thumbnail}}
+                                                     alt=""
+                                                     width="128"
+                                                     height="128"
+                                                     style="border: 1px solid; border-radius: 15px;">
+                                            </div>
+                                            <div >
+                                                <h3>{{model.name}}</h3>
+                                                <h5><b>Type: </b>{{model.type}}</h5>
+                                                <h5><b>Translation: </b>{{model.progress}}</h5>
+                                                <a class="btn btn-primary" href="#/viewer?id={{model._id}}">
+                                                    Show in viewer
+                                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <!-- Bottom Back to top Mobile================================================== -->
+                                <div class="bs-docs-section clearfix">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="col-xs-6 col-sm-6 app-button-container mob-app-button-container back-to-top-container">
+                                                <p class="bs-component">
+                                                    <a href="#view-and-data-title" class="btn app-btn app-btn-lg app-btn-default back-to-top-btn">Back to top</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer================================================== -->
+
+    <div class="clearfix">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-footer">
+                    <div class="container app-container">
+                        <p><a href="http://www.autodesk.com/company/legal-notices-trademarks/privacy-statement">Privacy</a>  |  <a href="http://www.autodesk.com/company/legal-notices-trademarks">Legal Notices & Trademarks</a>  |  <a href="http://www.autodesk.com/company/license-compliance/report-noncompliance">Report Noncompliance</a>
+                        <br>&#169; Copyright 2015 Autodesk. All rights reserved. </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
