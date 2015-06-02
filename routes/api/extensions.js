@@ -15,8 +15,8 @@
 // DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////////////////
-var dbConnector = require('../../dbConnector');
-var config = require('../../config-server');
+var dbConnector = require('../dbConnector');
+var config = require('../../config/config-server');
 var express = require('express');
 var request = require('request');
 

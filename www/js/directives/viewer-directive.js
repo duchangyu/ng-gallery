@@ -98,28 +98,28 @@ angular.module('Autodesk.ADN.Toolkit.Viewer.Directive.Viewer', [])
 
                     $scope.viewerFactory = parentController.getViewerFactory();
 
-                    var config =  ($attributes.hasOwnProperty('config') ?
-                        JSON.parse($attributes.config) : {});
+                    var config = ($attributes.hasOwnProperty('config') ?
+                      JSON.parse($attributes.config) : {});
 
                     $scope.viewer = $scope.viewerFactory.createViewer(
-                        $element[0],
-                        config);
+                      $element[0],
+                      config);
 
                     $scope.viewer.id =
-                        $scope.viewer.container.parentElement.id;
+                      $scope.viewer.container.parentElement.id;
 
-                     $scope.onViewerInitialized({
+                    $scope.onViewerInitialized({
                         viewer: $scope.viewer
-                     });
+                    });
 
-                     $scope.viewer.load(path);
+                    $scope.viewer.load(path);
 
-                     $scope.$on('$destroy', function() {
+                    $scope.$on('$destroy', function () {
 
-                         $scope.onDestroy({
-                             viewer: $scope.viewer
-                         });
-                     });
+                        $scope.onDestroy({
+                            viewer: $scope.viewer
+                        });
+                    });
                 }
             });
         }

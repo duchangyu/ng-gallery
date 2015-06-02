@@ -39,29 +39,6 @@ angular.module('Autodesk.ADN.AngularView.Navbar.ViewerNavbar',
 
         ['$scope', '$sce', function($scope, $sce) {
 
-            $scope.items = [];
-
-            $scope.selectedItems = [];
-
-            $scope.searchInput = "";
-
-            $scope.modes = [{
-                value: 'VIEWER_LAYOUT_MODE_ROW_FITTED',
-                label: $sce.trustAsHtml('Layout Mode: Row - Fitted')
-            },
-            {
-                value: 'VIEWER_LAYOUT_MODE_ROW',
-                label: $sce.trustAsHtml('Layout Mode: Row')
-            },
-            {
-                value: 'VIEWER_LAYOUT_MODE_COLUMN_FITTED',
-                label: $sce.trustAsHtml('Layout Mode: Column - Fitted')
-            }];
-
-            $scope.selectedLayoutMode = $scope.modes[0].value;
-
-            $scope.modeDisabled = false;
-
             ///////////////////////////////////////////////////////////////////
             //
             //
@@ -127,6 +104,35 @@ angular.module('Autodesk.ADN.AngularView.Navbar.ViewerNavbar',
                     $scope.modeDisabled = false;
                 }
             });
+
+            ///////////////////////////////////////////////////////////////////
+            //
+            //
+            ///////////////////////////////////////////////////////////////////
+            $scope.modes = [
+                {
+                    value: 'VIEWER_LAYOUT_MODE_ROW_FITTED',
+                    label: $sce.trustAsHtml('Layout Mode: Row - Fitted')
+                },
+                {
+                    value: 'VIEWER_LAYOUT_MODE_ROW',
+                    label: $sce.trustAsHtml('Layout Mode: Row')
+                },
+                {
+                    value: 'VIEWER_LAYOUT_MODE_COLUMN_FITTED',
+                    label: $sce.trustAsHtml('Layout Mode: Column - Fitted')
+                }
+            ];
+
+            $scope.selectedLayoutMode = $scope.modes[0].value;
+
+            $scope.modeDisabled = false;
+
+            $scope.selectedItems = [];
+
+            $scope.searchInput = "";
+
+            $scope.items = [];
     }]);
 
 

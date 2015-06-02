@@ -36,4 +36,9 @@ angular.module('Autodesk.ADN.AngularView.Dialog.About',[])
                 href: "http://adndevblog.typepad.com/cloud_and_mobile/philippe-leefsma.html"
             };
 
+            $scope.$on('app.onAbout', function (event, data) {
+
+                $('#aboutDlg').modal('show');
+            });
+
         }]);

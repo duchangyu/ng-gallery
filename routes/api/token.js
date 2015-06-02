@@ -15,8 +15,8 @@
 // DOES NOT WARRANT THAT THE OPERATION OF THE PROGRAM WILL BE
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////////////////
-var credentialsStg = require('../../credentials-stg');
-var credentials = require('../../credentials');
+var credentialsStg = require('../../config/credentials-stg');
+var credentials = require('../../config/credentials');
 var express = require('express');
 var request = require('request');
 
@@ -43,6 +43,9 @@ router.get('/', function (req, res) {
             if (!error && response.statusCode == 200) {
 
                 res.send(body);
+            }
+            else {
+                console.log(body);
             }
         });
 });

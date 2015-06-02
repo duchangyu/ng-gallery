@@ -8,9 +8,9 @@
 
     <div class="modal-dialog">
 
-        <div class="modal-content">
+        <div class="modal-content gallery-modal-content">
 
-            <div class="modal-header">
+            <div class="modal-header gallery-modal-header">
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">
@@ -28,11 +28,46 @@
                 </h4>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body" style="overflow: auto;">
+
+                <!--=================== Search Group ===================-->
+                <div class="input-group" style="width:100%; border: 3px solid #E1E1E1;">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Search Models ..."
+                           aria-describedby="basic-addon1"
+                           ng-model="modelsFilterValue">
+                </div>
+
+                <!--=================== Model List ===================-->
+                <ul id="modelList" class="col-lg-12" style="overflow: auto; max-height: 500px; margin:0;">
+                    <li ng-repeat="model in models | filter: searchFilter | orderBy:'name'" style="list-style-type: none; margin:0;">
+
+                        <div class="row" style="{{['background-color:#FFFFFF;padding: 10px', 'background-color:rgba(162, 201, 134, 0.41);padding: 10px'][$index %2]}}">
+                            <div class="col-md-3">
+                                <img class="img-responsive"
+                                     ng-src={{model.thumbnail}}
+                                     alt=""
+                                     width="80"
+                                     height="80"
+                                     style="border: 1px solid; border-radius: 15px;">
+                            </div>
+                            <div >
+                                <h4>{{model.name}}</h4>
+                                <a class="btn btn-primary"
+                                   href=""
+                                   ng-click="onLoadModel(model._id)">
+                                    Load
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
 
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer gallery-modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>

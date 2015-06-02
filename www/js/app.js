@@ -18,12 +18,13 @@
 'use strict';
 
 //config
-var config = require("./config-client");
+var configClient = require("./config-client");
 
 // UI
 require("./ui/views/home/home");
 require("./ui/dialogs/about/about");
 require("./ui/dialogs/embed/embed");
+require("./ui/dialogs/login/login");
 require("./ui/dialogs/models/models");
 require("./ui/views/upload/upload");
 require("./ui/views/viewer/viewer");
@@ -38,6 +39,7 @@ require("./directives/spinning-img-directive");
 require("./services/view.and.data-service");
 require("./services/extension-service");
 require("./services/thumbnail-service");
+require("./services/appState-service");
 require("./services/toolkit-service");
 require("./services/model-service");
 
@@ -45,13 +47,54 @@ require("./services/model-service");
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-angular.module('Autodesk.ADN.AngularView.Main',
+angular.module('ui-layout-events', [
+    'ui.layout'
+])
+  .directive('uiLayout', function($timeout, $rootScope) {
+
+      var methods = ['updateDisplay',
+            'toggleBefore',
+            'toggleAfter',
+            'mouseUpHandler',
+            'mouseMoveHandler'],
+        timer;
+
+      function fireEvent() {
+          if(timer) $timeout.cancel(timer);
+          timer = $timeout(function() {
+              $rootScope.$broadcast('ui.layout.resize');
+              timer = null;
+          }, 0);
+      }
+
+      return {
+          restrict: 'AE',
+          require: '^uiLayout',
+          link: function(scope, elem, attrs, uiLayoutCtrl) {
+              angular.forEach(methods, function(method) {
+                  var oldFn = uiLayoutCtrl[method];
+                  uiLayoutCtrl[method] = function() {
+                      oldFn.apply(uiLayoutCtrl, arguments);
+                      fireEvent();
+                  };
+              });
+          }
+      };
+  });
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//
+///////////////////////////////////////////////////////////////////////////////
+angular.module('Autodesk.ADN.AngularView.App',
     [
         // Angular
         'ngRoute',
 
         // Libs
         'ui.layout',
+        'ui-layout-events',
         'ngMdIcons',
         'ngResource',
         'ui.bootstrap',
@@ -68,12 +111,14 @@ angular.module('Autodesk.ADN.AngularView.Main',
         'Autodesk.ADN.AngularView.Navbar.AppNavbar',
         'Autodesk.ADN.AngularView.Dialog.Models',
         'Autodesk.ADN.AngularView.Dialog.Embed',
+        'Autodesk.ADN.AngularView.Dialog.Login',
 
         // Directives
         'Autodesk.ADN.Toolkit.UI.Directive.SpinningImg',
 
         //Services
         'Autodesk.ADN.AngularView.Service.Toolkit',
+        'Autodesk.ADN.AngularView.Service.AppState',
         'Autodesk.ADN.Toolkit.ViewData.Service.ViewAndData',
         'Autodesk.ADN.AngularView.Service.Resource.Extension',
     ])
@@ -82,37 +127,60 @@ angular.module('Autodesk.ADN.AngularView.Main',
     //
     //
     ///////////////////////////////////////////////////////////////////////////
-    .controller('Autodesk.ADN.AngularView.Main.Controller',
-        ['$scope', function($scope) {
-
-        $scope.activeView = '';
-
-        $scope.staging = false;
-
-        $scope.showNavbar = true;
-
-        $scope.API_URL =  "http://" +
-            window.location.host +
-            config.host + '/api/';
-
-        requirejs.config({
-            waitSeconds: 0
-        });
-    }])
-
-    ///////////////////////////////////////////////////////////////////////////
-    //
-    //
-    ///////////////////////////////////////////////////////////////////////////
     .config(
-        ['$routeProvider', 'ViewAndDataProvider',
-          function ($routeProvider, ViewAndDataProvider)
-        {
-            $routeProvider.otherwise({redirectTo: '/home'});
+      ['$routeProvider', '$locationProvider', 'ViewAndDataProvider',
+          function ($routeProvider, $locationProvider, ViewAndDataProvider)
+          {
+              $routeProvider.otherwise({redirectTo: '/home'});
 
-            ViewAndDataProvider.setTokenUrl(
+              //$locationProvider.html5Mode(true);
+
+              ViewAndDataProvider.setTokenUrl(
                 "http://" +
                 window.location.host +
-                config.host + '/api/token');
-        }]);
+                configClient.host + '/api/token');
+          }])
+
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //
+    ///////////////////////////////////////////////////////////////////////////
+    .controller('Autodesk.ADN.AngularView.App.Controller',
+        ['$scope', '$http', 'AppState', function($scope, $http, AppState) {
+
+            $scope.showNavbar = function() {
+
+                return AppState.showNavbar;
+            };
+
+            requirejs.config({
+                waitSeconds: 0
+            });
+
+            $scope.$on('app.onModal', function (event, data) {
+
+                switch(data.dlgId) {
+
+                    case '#loginDlg':
+
+                        if(!AppState.isAuthenticated) {
+                            $scope.$broadcast('app.onLogin', data);
+                        }
+
+                        break;
+
+                    case '#aboutDlg':
+
+                        $scope.$broadcast('app.onAbout', data);
+                        break;
+
+                    case '#modelsDlg':
+
+                        $scope.$broadcast('app.onModels', data);
+                        break;
+                }
+            });
+        }])
+
+
 

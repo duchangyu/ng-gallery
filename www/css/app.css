@@ -28,6 +28,13 @@ hr.home-separator {
     background-image:      -o-linear-gradient(left, #ccc, #333, #ccc);
 }
 
+.navbar {
+    position: relative;
+    min-height: 10px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
+
 .navbar-brand,
 .navbar-nav > li > a {
     line-height: 64px;
@@ -44,4 +51,19 @@ hr.home-separator {
     left: 0;
     right: 0;
     overflow: auto;
+}
+
+.gallery-modal-content {
+
+    background-color: rgb(238, 238, 238);
+}
+
+.gallery-modal-header{
+
+    border-bottom: 1px solid #5C9CFF;
+}
+
+.gallery-modal-footer{
+
+    border-top: 1px solid #5C9CFF;
 }

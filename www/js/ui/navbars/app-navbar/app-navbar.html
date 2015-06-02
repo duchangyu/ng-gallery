@@ -29,24 +29,41 @@
 
         <div class="collapse navbar-collapse" id="app-navbar">
             <ul class="nav navbar-nav">
-                <li ng-class="(activeView === 'home') ? 'active' : ''">
-                    <a href="#/home">Home</a>
+                <li ng-class="(activeView() === 'home') ? 'active' : ''">
+                    <a href="#/home">
+                        Home
+                    </a>
                 </li>
-                <li ng-class="(activeView === 'viewer') ? 'active' : ''">
-                    <a href="#/viewer">Viewer</a>
+                <li ng-class="(activeView() === 'viewer') ? 'active' : ''">
+                    <a href="#/viewer" ng-click="onReload('/viewer')">
+                        Viewer
+                    </a>
                 </li>
-                <li ng-class="(activeView === 'upload') ? 'active' : ''">
-                    <a href="#/upload">Upload</a>
+                <li ng-class="(activeView() === 'upload') ? 'active' : ''">
+                    <a href="#/upload">
+                        Upload
+                    </a>
                 </li>
-                <li ng-class="(activeView === 'extensions') ? 'active' : ''">
-                    <a href="#/extensions">Extensions</a>
+                <li ng-class="(activeView() === 'extensions') ? 'active' : ''">
+                    <a href="#/extensions">
+                        Extensions
+                    </a>
                 </li>
-                <li ng-class="(activeView === 'extension-editor') ? 'active' : ''">
-                    <a href="#/extension-editor">Editor</a>
+                <li ng-class="(activeView() === 'extension-editor') ? 'active' : ''">
+                    <a href="#/extension-editor" ng-click="onReload('/extension-editor')">
+                        Editor
+                    </a>
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+
+                <li ng-class="(logStatus === 'Login') ? '' : 'active'">
+                    <a href="" ng-click="onLogin()">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        {{logStatus}}
+                    </a>
+                </li>
 
                 <li class="dropdown">
 
@@ -61,6 +78,7 @@
                             <a ng-if="item.class !== 'divider'" ng-href="{{item.href}}" ng-click="item.onClick()" target="_blank">
                                 <ng-md-icon icon="{{item.icon}}" style="{{item.style}}" size="{{item.size}}">
                                 </ng-md-icon>
+                                &nbsp;
                                 {{item.text}}
                             </a>
                         </li>
@@ -71,4 +89,3 @@
     </div>
 </nav>
 
-<div ng-include="'js/ui/dialogs/about/about.html'"> </div>

@@ -40,12 +40,27 @@
                             <button type="button" class="btn btn-default btn-sm" ng-click="onLoadExtension()">
                                 <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span> Load
                             </button>
+                            &nbsp;
+                            <button type="button" class="btn btn-default btn-sm" ng-click="onUnloadExtension()">
+                                <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span> Unload
+                            </button>
 
+                            <!--ui-select
+                                ng-model="currentExtension.selected"
+                                theme="selectize"
+                                ng-disabled="disabled"
+                                title="Extensions..."
+                                style="width:150px; height:40px; z-index: 999">
+                                <ui-select-match placeholder="Select extension">{{$select.selected.label}}</ui-select-match>
+                                <ui-select-choices repeat="extension in extensions | filter: $select.search">
+                                    <span ng-bind-html="extension.label "></span>
+                                </ui-select-choices>
+                            </ui-select-->
                         </div>
 
                     </div>
 
-                    <div ui-layout-container>
+                    <div ui-layout-container style="z-index: 0">
                         <pre id="dynamic-editor">
 
                         </pre>

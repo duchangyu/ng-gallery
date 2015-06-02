@@ -18,18 +18,19 @@
 'use strict';
 
 require("../../../directives/viewer-directive");
-require("../../../../lib/bower_components/ace/ace");
-require("../../../../lib/bower_components/ace/theme-chrome");
-require("../../../../lib/bower_components/ace/mode-javascript");
+
+var config = require("../../../config-client");
 
 angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
     [
-      'ngRoute',
-      'js-data',
-      'ui-layout-events',
-      'Autodesk.ADN.AngularView.Service.Toolkit',
-      'Autodesk.ADN.Toolkit.Viewer.Directive.Viewer',
-      'Autodesk.ADN.AngularView.Service.Resource.Model'
+        'ngRoute',
+        'js-data',
+        'ngSanitize',
+        'ui.select',
+        'ui-layout-events',
+        'Autodesk.ADN.AngularView.Service.Toolkit',
+        'Autodesk.ADN.Toolkit.Viewer.Directive.Viewer',
+        'Autodesk.ADN.AngularView.Service.Resource.Model'
     ])
 
     ///////////////////////////////////////////////////////////////////////////
@@ -67,8 +68,8 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
     ///////////////////////////////////////////////////////////////////////////
     .controller('Autodesk.ADN.AngularView.View.ExtensionEditor.Controller',
 
-        ['$scope', '$http', 'ExtensionSvc', 'Model', 'Toolkit',
-            function($scope, $http, ExtensionSvc, Model, Toolkit) {
+        ['$scope', '$http', '$sce', 'ExtensionSvc', 'Model', 'Toolkit', 'AppState',
+            function($scope, $http, $sce, ExtensionSvc, Model, Toolkit, AppState) {
 
         ///////////////////////////////////////////////////////////////////
         //
@@ -90,8 +91,8 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
         ///////////////////////////////////////////////////////////////////
         function initializeViewer() {
 
-            $scope.tokenUrl = $scope.API_URL +
-                ($scope.staging ? 'tokenstg' : 'token');
+            $scope.tokenUrl = config.ApiUrl +
+                (config.staging ? '/tokenstg' : '/token');
 
             $scope.viewerContainerConfig = {
 
@@ -104,7 +105,19 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
                 //viewerType: 'Viewer3D'
             }
 
-            loadFromId(Autodesk.Viewing.Private.getParameterByName("id"));
+            var id = Autodesk.Viewing.Private.getParameterByName("id");
+
+            if(id.length) {
+
+                loadFromId(id);
+            }
+            else {
+
+                $scope.$emit('app.onModal', {
+                    dlgId: '#modelsDlg',
+                    source: '/extension-editor'
+                });
+            }
         }
 
         ///////////////////////////////////////////////////////////////////
@@ -197,6 +210,8 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
 
                     var code = $scope.extensions[0].code;
 
+                    console.log($scope.extensions[0])
+
                     $scope.editor.setValue(code, 1);
                 }
             });
@@ -209,7 +224,13 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
 
                 $scope.extensions[0].code = code;
 
-                ExtensionSvc.update($scope.extensions[0].id, {code:code})
+                ExtensionSvc.update(
+                  $scope.extensions[0].id,
+                  {
+                      label: 'edit',
+                      name: 'edit',
+                      code:code
+                  })
             });
         }
 
@@ -273,7 +294,7 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
         //
         //
         ///////////////////////////////////////////////////////////////////
-        function findExtensions(str) {
+        function extractExtensionIds(str) {
 
             String.prototype.replaceAll = function (find, replace) {
                 var str = this;
@@ -305,7 +326,8 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
 
                 var substr = str.substring(start, end);
 
-                var ext = substr.replaceAll('theExtensionManager.registerExtension', '').
+                var ext = substr.replaceAll(
+                  'theExtensionManager.registerExtension', '').
                     replaceAll('\n', '').
                     replaceAll('(', '').
                     replaceAll('\'', '').
@@ -321,8 +343,57 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
         //
         //
         ///////////////////////////////////////////////////////////////////
+        function extractExtensionNameFromId(extId) {
+
+            function UpperCaseArray(input) {
+                var result = input.replace(/([A-Z]+)/g, ",$1").replace(/^,/, "");
+                return result.split(",");
+            }
+
+            var idComponents = extId.split('.');
+
+            var nameComponents =
+              UpperCaseArray(idComponents[idComponents.length - 1]);
+
+            var name = '';
+
+            nameComponents.forEach(function(nameComp){
+                name += nameComp + ' ';
+            });
+
+            return name;
+        }
+
+        ///////////////////////////////////////////////////////////////////
+        //
+        //
+        ///////////////////////////////////////////////////////////////////
         $scope.onLoadExtension = function() {
 
+            var code = $scope.editor.getValue();
+
+            var extIds = extractExtensionIds(code);
+
+            var res = eval(code);
+
+            if(res) {
+
+                loadExtensions(extIds);
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////////
+        //
+        //
+        ///////////////////////////////////////////////////////////////////
+        $scope.onUnloadExtension = function() {
+
+            $scope.loadedExtIds.forEach(function(extId) {
+
+                $scope.viewer.unloadExtension(extId);
+            });
+
+            $scope.loadedExtIds = [];
         }
 
         ///////////////////////////////////////////////////////////////////
@@ -337,9 +408,8 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
 
                     $scope.viewer.loadExtension(extId);
 
-                    addDropdownItem(extId);
+                    $scope.loadedExtIds.push(extId);
                 });
-
             }
         }
 
@@ -347,151 +417,16 @@ angular.module('Autodesk.ADN.AngularView.View.ExtensionEditor',
         //
         //
         ///////////////////////////////////////////////////////////////////
-        function unloadExtension(extId) {
+        AppState.activeView = 'extension-editor';
 
-            $scope.viewer.unloadExtension(extId);
-        }
-
-        ///////////////////////////////////////////////////////////////////
-        //
-        //
-        ///////////////////////////////////////////////////////////////////
-        function initializeLayout () {
-
-            var pstyle = 'border: 1px solid #dfdfdf;';
-
-            var layout = Toolkit.newGUID();
-
-            $('#layout-container').w2layout({
-                name: layout,
-                padding: 4,
-                panels: [
-                    {type: 'main', content: $('#viewer-dynamic')},
-                    //{ type: 'top', size: 30, resizable: false, style: pstyle, content: '' },
-                    {type: 'bottom', size: 30, resizable: false, style: pstyle, content: ''},
-                    {
-                        type: 'right', size: '45%', resizable: true, style: pstyle, content: $('#editor'),
-
-                        toolbar: {
-                            items: [
-                                {
-                                    type: 'button',
-                                    id: 'bLoad',
-                                    caption: 'Load',
-                                    icon: 'w2ui-icon-plus',
-                                    hint: 'Load'
-                                },
-                                {type: 'break', id: 'break0'},
-                                {
-                                    type: 'button',
-                                    id: 'bUnload',
-                                    caption: 'Unload ExtensionSvc:',
-                                    icon: 'w2ui-icon-cross',
-                                    hint: 'Unload'
-                                },
-                                { type: 'html',  id: 'item6', html:
-
-                                    $('#extDropdownDivId').html()
-                                    //'<input type="list">'
-                                },
-                                {type: 'break', id: 'break1'},
-                                {
-                                    type: 'button',
-                                    id: 'bReset',
-                                    caption: 'Reset',
-                                    icon: 'w2ui-icon-reload',
-                                    hint: 'Reset'
-                                }
-                            ],
-                            onClick: function (event) {
-
-                                switch (event.target) {
-
-                                    case 'bLoad':
-
-                                        var code = $scope.editor.getValue();
-
-                                        var extensions = findExtensions(code);
-
-                                        var res = eval(code);
-
-                                        if(res) {
-
-                                            loadExtensions(extensions);
-                                        }
-
-                                        break;
-
-                                    case 'bUnload':
-
-                                        var extId = $("#extDropdownId option:selected").val();
-
-                                        unloadExtension(extId);
-
-
-                                        var id = $("#extDropdownId option:selected").attr('id');
-
-                                        removeDropdownItem(id);
-
-                                        break;
-
-                                    case 'bReset':
-                                        onResetEditor();
-                                        break;
-                                }
-                            }
-                        }
-                    }
-                ]
-            });
-
-            /*w2ui[layout].on('resize', function (event) {
-
-                event.onComplete = function () {
-
-                    if ($scope.viewer)
-                        $scope.viewer.resize();
-                }
-            });*/
-        }
-
-        function addDropdownItem(extId) {
-
-            var idComponents = extId.split('.');
-
-            var nameComponents =
-                idComponents[idComponents.length - 1].
-                    match(/[A-Z]?[a-z]+|[0-9]+/g);
-
-            var name = '';
-
-            nameComponents.forEach(function(nameComp){
-                name += nameComp + ' ';
-            });
-
-            var option = '<option id=' + Toolkit.newGUID() +
-                ' value=' + extId + '>' + name +
-                '</option>';
-
-            $("#extDropdownId").append(option);
-        }
-
-        function removeDropdownItem(id) {
-
-            $("#" + id).remove();
-        }
-
-        ///////////////////////////////////////////////////////////////////
-        //
-        //
-        ///////////////////////////////////////////////////////////////////
-        $scope.$parent.activeView = 'extension-editor';
+        $scope.loadedExtIds = [];
 
         $scope.viewer = null;
 
         $scope.height = 500;
 
         initializeViewer();
+
         initializeEditor();
     }]);
 

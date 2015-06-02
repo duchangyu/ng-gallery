@@ -47,85 +47,106 @@ angular.module('Autodesk.ADN.AngularView.View.Home',
     ///////////////////////////////////////////////////////////////////////////
     .controller('Autodesk.ADN.AngularView.View.Home.Controller',
 
-        ['$scope', 'ViewAndData', 'Model', 'Thumbnail',
-            function($scope, ViewAndData, Model, Thumbnail) {
+        ['$scope', 'ViewAndData', 'Model', 'Thumbnail', 'AppState',
+            function($scope, ViewAndData, Model, Thumbnail, AppState) {
 
-            $scope.$parent.activeView = 'home';
+              ///////////////////////////////////////////////////////////////////
+              //
+              //
+              ///////////////////////////////////////////////////////////////////
+              $scope.searchFilter = function (model) {
 
-            $scope.$parent.showNavbar = true;
+                  var regExp = new RegExp($scope.modelsFilterValue, 'i');
 
-            $scope.models = [];
+                  return !$scope.modelsFilterValue ||
+                    regExp.test(model.name);
+              };
 
-            ///////////////////////////////////////////////////////////////////
-            //
-            //
-            ///////////////////////////////////////////////////////////////////
-            $scope.searchFilter = function (model) {
+              ///////////////////////////////////////////////////////////////////
+              //
+              //
+              ///////////////////////////////////////////////////////////////////
+              function loadModels() {
 
-                var regExp = new RegExp($scope.modelsFilterValue, 'i');
+                //fetches 10 models at a time
 
-                return !$scope.modelsFilterValue ||
-                  regExp.test(model.name);
-            };
+                var limit = 10;
 
-            ///////////////////////////////////////////////////////////////////
-            //
-            //
-            ///////////////////////////////////////////////////////////////////
-            function loadModels() {
+                var skip = 0;
 
-                Model.query(function(models) {
+                loadModelsRec(skip, limit)
+              }
 
-                    models.forEach(function(model) {
+              function loadModelsRec(skip, limit) {
 
-                        // set as default
-                        model.thumbnail = "img/adsk/adsk-128x128-32.png";
+                  Model.query({skip: skip, limit:limit}, function(models) {
 
-                        $scope.models.push(model);
+                    if(models.length) {
 
-                        Thumbnail.get({modelId:model._id},
-                          function(response){
-                              model.thumbnail =
-                                "data:image/png;base64," + response.thumbnail.data;
-                          });
+                      models.forEach(function(model) {
+
+                          // set as default
+                          model.thumbnail = "img/adsk/adsk-128x128-32.png";
+
+                          $scope.models.push(model);
+
+                          Thumbnail.get({modelId:model._id},
+                            function(response){
+                                model.thumbnail =
+                                  "data:image/png;base64," + response.thumbnail.data;
+                            });
 
 
-                        var fileId = ViewAndData.client.fromBase64(model.urn);
+                          var fileId = ViewAndData.client.fromBase64(model.urn);
 
-                        // role
-                        ViewAndData.client.getSubItemsWithProperties(
-                          fileId,
-                          { type: 'geometry'},
-                          function (items){
-                              if(items.length > 0) {
-                                  model.type = items[0].role;
-                              }
-                          },
-                          function (error) {
+                          // role
+                          ViewAndData.client.getSubItemsWithProperties(
+                            fileId,
+                            { type: 'geometry'},
+                            function (items){
+                                if(items.length > 0) {
+                                    model.type = items[0].role;
+                                }
+                            },
+                            function (error) {
 
-                          }
-                        );
+                            }
+                          );
 
-                        ViewAndData.client.getViewableAsync(
-                          fileId,
-                          function (viewable) {
+                          //progress
+                          ViewAndData.client.getViewableAsync(
+                            fileId,
+                            function (viewable) {
 
-                              model.progress = viewable.progress;
-                          },
-                          function (error) {
+                                model.progress = viewable.progress;
+                            },
+                            function (error) {
 
-                          }, 'status');
-                    });
-                });
-            }
+                            }, 'status');
+                      });
 
-            ///////////////////////////////////////////////////////////////////
-            //
-            //
-            ///////////////////////////////////////////////////////////////////
-            ViewAndData.client.onInitialized(function() {
+                      loadModelsRec(skip + limit, limit);
+                    }
+                  });
+              }
+
+              ///////////////////////////////////////////////////////////////////
+              //
+              //
+              ///////////////////////////////////////////////////////////////////
+              ViewAndData.client.onInitialized(function() {
 
                 loadModels();
-            });
+              });
+
+              ///////////////////////////////////////////////////////////////////
+              //
+              //
+              ///////////////////////////////////////////////////////////////////
+              AppState.activeView = 'home';
+
+              AppState.showNavbar = true;
+
+              $scope.models = [];
     }]);
 

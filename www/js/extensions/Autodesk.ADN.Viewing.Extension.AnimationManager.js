@@ -295,6 +295,11 @@ Autodesk.ADN.Viewing.Extension.AnimationManager = function (viewer, options) {
       }
     }
 
+    this.stopExplodeMotion = function () {
+
+      delete _tool.motionCallbacks['explode'];
+    }
+
     /////////////////////////////////////////////////////////////
     //
     //
@@ -323,6 +328,11 @@ Autodesk.ADN.Viewing.Extension.AnimationManager = function (viewer, options) {
 
           viewer.navigation.setPosition(position);
       };
+
+      this.stopRotateMotion = function () {
+
+        delete _tool.motionCallbacks['rotate'];
+      }
     }
   }
 };

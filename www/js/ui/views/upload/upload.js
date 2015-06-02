@@ -44,12 +44,19 @@ angular.module('Autodesk.ADN.AngularView.View.Upload',
   ///////////////////////////////////////////////////////////////////////////
   .controller('Autodesk.ADN.AngularView.View.Upload.Controller',
   
-  ['$scope',
-    function($scope) {
-      
-      $scope.$parent.activeView = 'upload';
-      
-      $scope.$parent.showNavbar = true;
-      
-      
+  ['$scope', 'AppState',
+    function($scope, AppState) {
+
+      AppState.activeView = 'upload';
+
+      AppState.showNavbar = true;
+
+      if(!AppState.isAuthenticated) {
+
+        $scope.$emit('app.onModal', {
+          dlgId: '#loginDlg',
+          caption: 'This feature requires log in ...'
+        });
+      }
+
     }]);

@@ -23,7 +23,7 @@ Autodesk.ADN.Viewing.Extension.Section = function (viewer, options) {
     // native viewer extension "Autodesk.Section"
     _viewer.loadExtension("Autodesk.Section");
 
-    console.log('Autodesk.ADN.Viewing.Extension.AnimationManager loaded');
+    console.log('Autodesk.ADN.Viewing.Extension.Section loaded');
 
     return true;
   };
@@ -36,7 +36,7 @@ Autodesk.ADN.Viewing.Extension.Section = function (viewer, options) {
 
     _viewer.unloadExtension("Autodesk.Section");
 
-    console.log('Autodesk.ADN.Viewing.Extension.AnimationManager unloaded');
+    console.log('Autodesk.ADN.Viewing.Extension.Section unloaded');
 
     return true;
   };

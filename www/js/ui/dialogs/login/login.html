@@ -1,0 +1,55 @@
+<div id="loginDlg"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+     ng-controller="Autodesk.ADN.AngularView.Dialog.Login.Controller">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content gallery-modal-content">
+
+      <div class="modal-header gallery-modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">
+                        Close
+                    </span>
+        </button>
+
+        <h4 class="modal-title">
+          <img step="5.0"
+               period="100"
+               height="24"
+               width="24"
+               ng-src="img/adsk/adsk-32x32-32.png"/>
+          {{caption}}
+        </h4>
+      </div>
+
+      <div class="modal-body">
+
+        <a class="btn btn-lg btn-block btn-social btn-facebook" ng-click="onFacebookLogin()">
+          <i class="fa fa-facebook"></i> Log in with Facebook
+        </a>
+
+        <a class="btn btn-lg btn-block btn-social btn-google" ng-click="onGoogleLogin()">
+          <i class="fa fa-google"></i> Log in with Google
+        </a>
+
+        <a class="btn btn-lg btn-block btn-social btn-github" ng-click="onGitHubLogin()">
+          <i class="fa fa-github"></i> Log in with GitHub
+        </a>
+
+        <a class="btn btn-lg btn-block btn-social btn-linkedin" ng-click="onLinkedInLogin()">
+          <i class="fa fa-linkedin"></i> Log in with LinkedIn
+        </a>
+
+      </div>
+
+      <div class="modal-footer gallery-modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

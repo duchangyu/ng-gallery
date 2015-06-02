@@ -284,11 +284,11 @@ Autodesk.ADN.Viewing.Extension.Physics = function (viewer, options) {
             this.container.appendChild(this.title);
             this.container.appendChild(this.content);
 
-            //this.initializeMoveHandlers(this.container);
+            this.initializeMoveHandlers(this.container);
 
             this.closer = document.createElement("div");
 
-            this.closer.className = "AdnPanelClose";
+            //this.closer.className = "AdnPanelClose";
             //this.closer.textContent = "Close";
 
             this.initializeCloseHandler(this.closer);

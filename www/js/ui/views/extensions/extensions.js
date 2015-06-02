@@ -44,35 +44,8 @@ angular.module('Autodesk.ADN.AngularView.View.Extensions',
   ///////////////////////////////////////////////////////////////////////////
   .controller('Autodesk.ADN.AngularView.View.Extensions.Controller',
 
-  ['$scope', 'Extension',
-    function($scope, Extension) {
-
-      $scope.$parent.activeView = 'extensions';
-
-      $scope.$parent.showNavbar = true;
-
-
-      $scope.extensionNodes = [];
-
-      $scope.expandedExtensionNodes = [];
-
-      $scope.treeOptions = {
-
-        multiSelection: true,
-        nodeChildren: "children",
-        dirSelectable: true,
-
-        injectClasses: {
-          "ul": "c-ul",
-          "li": "c-li",
-          "liSelected": "c-liSelected",
-          "iExpanded": "c-iExpanded",
-          "iCollapsed": "c-iCollapsed",
-          "iLeaf": "c-iLeaf",
-          "label": "c-label",
-          "labelSelected": "c-labelSelected"
-        }
-      }
+  ['$scope', 'Extension', 'AppState',
+    function($scope, Extension, AppState) {
 
       ///////////////////////////////////////////////////////////////////////
       //
@@ -132,6 +105,42 @@ angular.module('Autodesk.ADN.AngularView.View.Extensions',
         });
       }
 
+      ///////////////////////////////////////////////////////////////////
+      //
+      //
+      ///////////////////////////////////////////////////////////////////
+      AppState.activeView = 'extensions';
+
+      AppState.showNavbar = true;
+
+      $scope.extensionNodes = [];
+
+      $scope.expandedExtensionNodes = [];
+
+      $scope.treeOptions = {
+
+        multiSelection: true,
+        nodeChildren: "children",
+        dirSelectable: true,
+
+        injectClasses: {
+          "ul": "c-ul",
+          "li": "c-li",
+          "liSelected": "c-liSelected",
+          "iExpanded": "c-iExpanded",
+          "iCollapsed": "c-iCollapsed",
+          "iLeaf": "c-iLeaf",
+          "label": "c-label",
+          "labelSelected": "c-labelSelected"
+        }
+      }
+
+      $scope.$emit('app.onModal', {
+        dlgId: '#loginDlg',
+        caption: 'This feature requires log in ...'
+      });
+
       loadExtensions();
+
     }]);
 

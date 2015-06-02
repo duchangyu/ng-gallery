@@ -16,10 +16,12 @@
 // UNINTERRUPTED OR ERROR FREE.
 /////////////////////////////////////////////////////////////////////////////////
 
+var config = require('./config/config-server');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var favicon = require('serve-favicon');
-var config = require('./config-server');
+var passport = require('passport');
 var express = require('express');
 
 var app = express();
@@ -29,8 +31,20 @@ app.use(favicon(__dirname + '/www/img/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(session(
+  {
+      //Randomly generated GUID
+      secret: '352EB973-A522-4362-87C0-4A87A7A8D33D',
+      saveUninitialized: true,
+      resave: false
+  }));
+
+//Middlewares
+app.use(passport.initialize());
+app.use(passport.session());
 
 //API Routes
+app.use(config.host + '/api/auth', require('./routes/api/auth'));
 app.use(config.host + '/api/token', require('./routes/api/token'));
 app.use(config.host + '/api/states', require('./routes/api/states'));
 app.use(config.host + '/api/models', require('./routes/api/models'));

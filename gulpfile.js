@@ -1,14 +1,18 @@
 /**
  * Created by leefsmp on 4/16/15.
  */
+var del = require("del");
 var gulp = require("gulp");
-var gutil = require("gulp-util");
-var clean = require('gulp-clean');
-var ngmin = require('gulp-ngmin');
-var rename = require('gulp-rename');
+var bower = require('gulp-bower');
 var uglify = require('gulp-uglify');
 var webpack = require("gulp-webpack");
-var webpackConfig = require("./webpack.config.js");
+var vinylPaths = require('vinyl-paths');
+var ngAnnotate = require('gulp-ng-annotate');
+
+var config = {
+  buildDir: './www/build',
+  bowerDir: './www/lib/bower_components'
+};
 
 ///////////////////////////////////////////////////////////////////////////
 // Clean Task
@@ -16,8 +20,17 @@ var webpackConfig = require("./webpack.config.js");
 ///////////////////////////////////////////////////////////////////////////
 gulp.task('clean', function () {
 
-  return gulp.src('www/build/*.js', {read: false})
-    .pipe(clean());
+  return gulp.src(config.buildDir + '/*.js', {read: false})
+    .pipe(vinylPaths(del));
+});
+
+///////////////////////////////////////////////////////////////////////////
+// bower task
+//
+///////////////////////////////////////////////////////////////////////////
+gulp.task('bower', function() {
+  return bower({directory: config.bowerDir}).pipe(
+    gulp.dest(config.bowerDir));
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -26,9 +39,11 @@ gulp.task('clean', function () {
 ///////////////////////////////////////////////////////////////////////////
 gulp.task("webpack:build", ['clean'], function(callback) {
 
+  var webpackConfig = require("./config/webpack.config.js");
+
   return gulp.src('www/js/app.js')
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest('www/build'));
+    .pipe(gulp.dest(config.buildDir));
 });
 
 ///////////////////////////////////////////////////////////////////////////
@@ -37,11 +52,10 @@ gulp.task("webpack:build", ['clean'], function(callback) {
 ///////////////////////////////////////////////////////////////////////////
 gulp.task('compress', ['webpack:build'], function() {
 
-  return gulp.src('www/build/*.js')
-    .pipe(ngmin())
+  return gulp.src(config.buildDir + '/*.js')
+    .pipe(ngAnnotate())
     .pipe(uglify({mangle: false}))
-    .pipe(rename({extname: ".min.js"}))
-    .pipe(gulp.dest('www/build'));
+    .pipe(gulp.dest(config.buildDir));
 });
 
 ///////////////////////////////////////////////////////////////////////////
