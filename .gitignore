@@ -25,9 +25,6 @@ build/Release
 node_modules
 www/lib/bower_components
 
-# credential configurations
-config/
-
 # Users Environment Variables
 .lock-wscript
 
@@ -35,8 +32,9 @@ config/
 .idea
 
 
+# credential configurations
+config/auth.js
 
+config/auth.js
 
-
-
-
+config/config-server.js
