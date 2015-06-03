@@ -29,6 +29,6 @@ www/lib/bower_components
 .lock-wscript
 
 # Credential configurations
-config
+config/*
 
 
