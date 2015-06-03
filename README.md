@@ -20,16 +20,16 @@ A comprehensive sample using Autodesk View & Data API powered by Node.js/MongoDb
 * In order to populate your database, you need to upload models through the View & Data WebService. See "Uploading your models to View & Data Web Service" section below.
 * Set your database settings in config-server.js acoording to your MongoDb install
 * To avoid upload your crendential configurations to github, do following to exclude the configuration changes:
-    ```
-    git update-index --assume-unchanged config/auth.js
-    git update-index --assume-unchanged config/config-server.js
-    git update-index --assume-unchanged config/credentials.js
-    git update-index --assume-unchanged config/credentials-stg.js
-    ```
+
+        git update-index --assume-unchanged config/auth.js
+        git update-index --assume-unchanged config/config-server.js
+        git update-index --assume-unchanged config/credentials.js
+        git update-index --assume-unchanged config/credentials-stg.js
+
 * Build the sample with following command: 
-    ```
-    gulp [build-debug]|[build-prod]
-    ```
+
+        gulp [build-debug]|[build-prod]
+
 * Run the server: "node server.js" from command line
 * Connect to server locally using a WebGL-compatible browser: http://localhost:3000/node/ng-gallery
 
