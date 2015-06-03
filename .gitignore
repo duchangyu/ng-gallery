@@ -31,10 +31,3 @@ www/lib/bower_components
 # webstorm project file
 .idea
 
-
-# credential configurations
-config/auth.js
-
-config/auth.js
-
-config/config-server.js
