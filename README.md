@@ -13,19 +13,24 @@ A comprehensive sample using Autodesk View & Data API powered by Node.js/MongoDb
 * Run "npm install" command from the project directory to resolve Node dependencies, you need to run as administrator if you are using Mac or Linux. 
 `sodo npm install`
 
-- Setup the configurations
+
 * Replace the place holder with your own credentials in credentials.js
 * The backend expects a locally running MongoDB database to connect to, so you will need to Install and run MongoDB, see [their tutorial] (http://docs.mongodb.org/manual/tutorial/) for instructions.
 * You will need to populate your database, check the response from that [REST API](http://viewer.autodesk.io/node/ng-gallery/api/models) to see how a populated database needs to look like.
 * In order to populate your database, you need to upload models through the View & Data WebService. See "Uploading your models to View & Data Web Service" section below.
 * Set your database settings in config-server.js acoording to your MongoDb install
 * To avoid upload your crendential configurations to github, do following to exclude the configuration changes:
+    ```
     git update-index --assume-unchanged config/auth.js
     git update-index --assume-unchanged config/config-server.js
     git update-index --assume-unchanged config/credentials.js
     git update-index --assume-unchanged config/credentials-stg.js
+    ```
+* Build the sample with following command: 
+    ```
+    gulp [build-debug]|[build-prod]
     
-- Run the sample
+    ```
 * Run the server: "node server.js" from command line
 * Connect to server locally using a WebGL-compatible browser: http://localhost:3000/node/ng-gallery
 
