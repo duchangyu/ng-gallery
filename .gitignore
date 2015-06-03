@@ -28,7 +28,12 @@ www/lib/bower_components
 # Users Environment Variables
 .lock-wscript
 
+# webstorm file
+.idea
+
 # Credential configurations
-config/*
+config
+
+
 
 
