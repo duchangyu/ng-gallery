@@ -29,7 +29,6 @@ A comprehensive sample using Autodesk View & Data API powered by Node.js/MongoDb
 * Build the sample with following command: 
     ```
     gulp [build-debug]|[build-prod]
-    
     ```
 * Run the server: "node server.js" from command line
 * Connect to server locally using a WebGL-compatible browser: http://localhost:3000/node/ng-gallery
