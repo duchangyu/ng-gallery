@@ -26,7 +26,7 @@ node_modules
 www/lib/bower_components
 
 # credential configurations
-config
+config/
 
 # Users Environment Variables
 .lock-wscript
