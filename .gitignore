@@ -25,14 +25,17 @@ build/Release
 node_modules
 www/lib/bower_components
 
+# credential configurations
+config
+
 # Users Environment Variables
 .lock-wscript
 
-# webstorm file
+# webstorm project file
 .idea
 
-# Credential configurations
-config
+
+
 
 
 
