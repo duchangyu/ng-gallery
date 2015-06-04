@@ -177,8 +177,8 @@ Autodesk.ADN.Viewing.Extension.StateManager = function (viewer, options) {
           "States Manager",
           {shadow: true});
 
+        this.container.style.right = "0px";
         this.container.style.top = "0px";
-        this.container.style.left = "0px";
 
         this.container.style.width = "380px";
         this.container.style.height = "400px";

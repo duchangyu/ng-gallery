@@ -105,9 +105,7 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
 
         for(var fragId in meshMap) {
 
-            var mesh = _viewer.impl.getRenderProxy(
-                _viewer,
-                fragId);
+            var mesh = getMesh(fragId);
 
             var pos = meshMap[fragId].position;
 
@@ -125,13 +123,13 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
 
         console.log('onItemSelected');
 
-        _viewer.select([]);
+        var fragId = event.fragIdsArray[0];
+
+        //_viewer.select([]);
 
         if(_running) {
             return;
         }
-
-        var fragId = event.fragIdsArray[0];
 
         if(typeof fragId !== 'undefined') {
 
@@ -149,9 +147,7 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
 
             fragIdsArray.forEach(function(subFragId){
 
-                var mesh = _viewer.impl.getRenderProxy(
-                    _viewer,
-                    subFragId);
+                var mesh = getMesh(subFragId);
 
                 _selectedMeshMap[subFragId] = {
 
@@ -167,6 +163,25 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
                 }
             });
         }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //
+    ///////////////////////////////////////////////////////////////////////////
+    function getMesh (fragId) {
+
+        var fragProxy = viewer.impl.getFragmentProxy(
+          viewer,
+          fragId);
+
+        var meshProxy = viewer.impl.getRenderProxy(
+          viewer,
+          fragId);
+
+        fragProxy.matrixWorld = meshProxy.matrixWorld;
+
+        return fragProxy;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -213,9 +228,7 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
 
             for(var fragId in _selectedMeshMap) {
 
-                var mesh = _viewer.impl.getRenderProxy(
-                    _viewer,
-                    fragId);
+                var mesh = getMesh(fragId);
 
                 var pos = _self.getMeshPosition(mesh);
 
@@ -267,9 +280,7 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
 
         for(var fragId in _selectedMeshMap) {
 
-            var mesh = _viewer.impl.getRenderProxy(
-                _viewer,
-                fragId);
+            var mesh = getMesh(fragId);
 
             var offset = _selectedMeshMap[fragId].offset;
 
@@ -280,6 +291,8 @@ Autodesk.ADN.Viewing.Extension.Move = function (viewer, options) {
             };
 
             mesh.matrixWorld.setPosition(pos);
+
+            mesh.updateAnimTransform();
         }
 
         //_viewer.impl.invalidate(true);

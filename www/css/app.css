@@ -67,3 +67,45 @@ hr.home-separator {
 
     border-top: 1px solid #5C9CFF;
 }
+
+.over-line{
+    border-color: #ff6000 !important;
+}
+
+.box {
+    border: 3px solid #E7E7E7;
+    border-radius: 6px 6px 6px 6px;
+    margin: 0px;
+    padding: 20px 10px 20px 10px;
+}
+
+.treebox {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.droptreebox {
+    overflow: auto;
+    max-height: 300px;
+}
+
+.c-ul {border: 1px solid #FFFFFF;}
+.c-li {background-color: #FFFFFF;}
+.c-liSelected {background-color: #FFFFFF;}
+.c-iExpanded {border: 1px solid #FFFFFF}
+.c-iCollapsed {border: 1px solid #FFFFFF}
+.c-iLeaf {border: 1px solid #FFFFFF}
+
+treecontrol.tree-light li.tree-leaf {
+    font-weight: normal;
+}
+
+treecontrol.tree-light li .tree-selected {
+    font-weight: normal;
+}
+
+.console {
+    padding: 20px 50px 0px 50px;
+    background-color: #ffffff;
+    height: 100%;
+}

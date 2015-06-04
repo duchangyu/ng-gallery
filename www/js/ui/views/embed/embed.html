@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Viewer Gallery Embed</title>
+
+  <link rel="shortcut icon" href="public/images/Adsk.ico" type="image/x-icon" />
+
+  <!--///////////////////////////////////////////////////////////////////////
+ // Bootstrap
+ //
+ ////////////////////////////////////////////////////////////////////////-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+
+  <!--///////////////////////////////////////////////////////////////////////
+  // JQuery
+  ////////////////////////////////////////////////////////////////////////-->
+  <script type="text/javascript" src="components/jquery/js/jquery.js"></script>
+
+  <!--///////////////////////////////////////////////////////////////////////
+  // RequireJS
+  ////////////////////////////////////////////////////////////////////////-->
+  <script src="components/require/js/require.min.js"></script>
+
+  <!--///////////////////////////////////////////////////////////////////////
+  // AngularJS
+  ////////////////////////////////////////////////////////////////////////-->
+  <script src="bower_components/angular/angular.min.js"></script>
+
+  <!--///////////////////////////////////////////////////////////////////////
+  // Viewer
+  ////////////////////////////////////////////////////////////////////////-->
+  <link type="text/css" rel="stylesheet" href="https://viewing.api.autodesk.com/viewingservice/v1/viewers/style.css?v=1.2.14"/>
+  <script src="https://developer.api.autodesk.com/viewingservice/v1/viewers/viewer3D.min.js?v=1.2.14"></script>
+  <script src="https://rawgit.com/Developer-Autodesk/library-javascript-view.and.data.api/master/js/Autodesk.ADN.Toolkit.Viewer.js"></script>
+  <script src="https://rawgit.com/Developer-Autodesk/library-javascript-view.and.data.api/master/js//Autodesk.ADN.Viewing.Extension.API.js"></script>
+
+
+  <script>
+
+    function addToolbar(viewer, id) {
+
+      var toolbarDivHtml = '<div id="embedToolbarId"> </div>';
+
+      viewer.container.id = 'viewerContainerId';
+
+      $(toolbarDivHtml).appendTo('#' + viewer.container.id);
+
+      $('#embedToolbarId').css({
+        'top': '20%',
+        'left': '1%',
+        'z-index': '100',
+        'position': 'absolute'
+      });
+
+      var toolbar = new Autodesk.Viewing.UI.ToolBar(true);
+
+      var ctrlGroup = new Autodesk.Viewing.UI.ControlGroup(
+              "Autodesk.ADN.Viewing.Extension.Toolbar.Embed");
+
+      var button = new Autodesk.Viewing.UI.Button(
+              "Autodesk.ADN.Viewing.Extension.Toolbar.Embed.Button");
+
+      button.icon.style.backgroundImage =
+              "url(public/images/adsk.24x24.png)";
+
+      button.setToolTip("View on the Gallery");
+
+      button.onClick = function (e) {
+
+        window.open('http://' +
+                window.location.host +
+                '/node/gallery/#/viewer?id=' + id,
+                '_blank');
+      };
+
+      ctrlGroup.addControl(button);
+
+      toolbar.addControl(ctrlGroup);
+
+      $('#embedToolbarId')[0].appendChild(
+              toolbar.container);
+    }
+
+    function loadFromId(id) {
+
+      var url =  'http://' + window.location.host + '/node/gallery/api/model/' + id;
+
+      $.getJSON(url, function(response){
+
+        var config = {
+          environment : 'AutodeskProduction'
+        }
+
+        var viewerFactory = new Autodesk.ADN.Toolkit.Viewer.AdnViewerFactory(
+                'http://' + window.location.host + '/node/gallery/api/token',
+                config);
+
+        viewerFactory.getViewablePath (response.model.urn,
+
+                function(pathInfoCollection) {
+
+                  var viewerConfig = {};
+
+                  var viewerConfigStr = Autodesk.Viewing.Private.getParameterByName("viewerConfig");
+
+                  viewerConfigStr = viewerConfigStr.replaceAll("'", "");
+
+                  if(viewerConfigStr.length > 0)
+                    viewerConfig = JSON.parse(viewerConfigStr);
+
+                  var viewer = viewerFactory.createViewer(
+                          $('#ViewerDiv')[0],
+                          viewerConfig);
+
+                  viewer.loadExtension('Autodesk.ADN.Viewing.Extension.API');
+
+                  if(pathInfoCollection.path3d.length > 0)
+                    viewer.load(pathInfoCollection.path3d[0].path);
+
+                  else if(pathInfoCollection.path2d.length > 0)
+                    viewer.load(pathInfoCollection.path2d[0].path);
+
+                  addToolbar(viewer, id);
+
+                  viewer.addEventListener(
+
+                          Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
+
+                          function (event) {
+
+                            var extIdsParam =
+                                    Autodesk.Viewing.Private.getParameterByName("extIds");
+
+                            var extIds = extIdsParam.split(';');
+
+                            extIds.forEach(function(extId){
+
+                              loadExtension(viewer, extId);
+                            })
+                          });
+                },
+                function (error) {
+
+                  console.log('Error: ' + error);
+                });
+      });
+    }
+
+    function loadExtension(viewer, extId) {
+
+      var url = 'http://' + window.location.host +
+              '/node/gallery/api/extension/' +
+              extId;
+
+      $.getJSON(url, function(response){
+
+        var file = response.extensions[0].file;
+
+        jQuery.getScript('/node/gallery/uploads/extensions/' + file)
+                .done(function () {
+
+                  viewer.loadExtension(extId);
+                })
+                .fail(function(jqxhr, settings, exception) {
+
+                  console.log("Load failed: " + extId);
+                });
+      });
+    }
+
+    $(document).ready(function () {
+
+      String.prototype.replaceAll = function (find, replace) {
+        var str = this;
+        return str.replace(new RegExp(
+                        find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'),
+                replace);
+      };
+
+      var id = Autodesk.Viewing.Private.getParameterByName("id");
+
+      if (id !== '') {
+
+        loadFromId(id);
+      };
+    });
+
+  </script>
+
+</head>
+
+<body style="margin:0">
+<div id="ViewerDiv" class="viewer"></div>
+</body>
+
+</html>

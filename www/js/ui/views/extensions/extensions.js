@@ -135,10 +135,12 @@ angular.module('Autodesk.ADN.AngularView.View.Extensions',
         }
       }
 
-      $scope.$emit('app.onModal', {
-        dlgId: '#loginDlg',
-        caption: 'This feature requires log in ...'
-      });
+      if(!AppState.isAuthenticated) {
+        $scope.$emit('app.onModal', {
+          dlgId: '#loginDlg',
+          caption: 'This feature requires log in ...'
+        });
+      }
 
       loadExtensions();
 

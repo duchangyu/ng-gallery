@@ -38,7 +38,4 @@ That samples are licensed under the terms of the [MIT License](http://opensource
 
 ##Written by 
 
-Written by [Philippe Leefsma](http://adndevblog.typepad.com/cloud_and_mobile/philippe-leefsma.html)  
-
-
-    "angular-ui-select3":     "*"
+Written by [Philippe Leefsma](http://adndevblog.typepad.com/cloud_and_mobile/philippe-leefsma.html)

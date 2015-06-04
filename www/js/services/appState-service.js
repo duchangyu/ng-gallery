@@ -18,7 +18,7 @@
 'use strict';
 
 //config
-var config = require("../config-client");
+var configClient = require("../config-client");
 
 angular.module('Autodesk.ADN.AngularView.Service.AppState', [])
 
