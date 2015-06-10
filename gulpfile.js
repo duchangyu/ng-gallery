@@ -37,8 +37,7 @@ gulp.task('bower', function() {
 // Webpack build task
 //
 ///////////////////////////////////////////////////////////////////////////
-
-gulp.task("webpack:build", ['bower','clean'], function(callback) {
+gulp.task("webpack:build", ['clean','bower'], function(callback) {
 
   var webpackConfig = require("./config/webpack.config.js");
 
