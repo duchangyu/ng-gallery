@@ -130,7 +130,7 @@ Autodesk.ADN.Viewing.Extension.Physics = function (viewer, options) {
 
         _viewer.getObjectTree(function (rootComponent) {
 
-            rootComponent.children.forEach(function(component) {
+            rootComponent.root.children.forEach(function(component) {
 
                 var fragIdsArray = (Array.isArray(component.fragIds) ?
                     component.fragIds :
@@ -615,36 +615,99 @@ Autodesk.ADN.Viewing.Extension.Physics = function (viewer, options) {
 
         var geometry = mesh.geometry;
 
+        var attributes = geometry.attributes;
+
         var hull = new Ammo.btConvexHullShape();
 
-        var vertexBuffer = geometry.vb;
+        var vA = new THREE.Vector3();
+        var vB = new THREE.Vector3();
+        var vC = new THREE.Vector3();
 
-        //console.log(geometry);
+        if (attributes.index !== undefined) {
 
-        var vertices = [];
+            var indices = attributes.index.array || geometry.ib;
+            var positions = geometry.vb ? geometry.vb : attributes.position.array;
+            var stride = geometry.vb ? geometry.vbstride : 3;
+            var offsets = geometry.offsets;
 
-        for(var i=0; i < vertexBuffer.length; i += geometry.vbstride) {
+            if (!offsets || offsets.length === 0) {
 
-            vertices.push({
+                offsets = [{start: 0, count: indices.length, index: 0}];
+            }
 
-                x: vertexBuffer[i],
-                y: vertexBuffer[i+1],
-                z: vertexBuffer[i+2]
-            });
+            for (var oi = 0, ol = offsets.length; oi < ol; ++oi) {
 
-            hull.addPoint(new Ammo.btVector3(
-                vertexBuffer[i],
-                vertexBuffer[i+1],
-                vertexBuffer[i+2]));
+                var start = offsets[oi].start;
+                var count = offsets[oi].count;
+                var index = offsets[oi].index;
+
+                for (var i = start, il = start + count; i < il; i += 3) {
+
+                    var a = index + indices[i];
+                    var b = index + indices[i + 1];
+                    var c = index + indices[i + 2];
+
+                    vA.fromArray(positions, a * stride);
+                    vB.fromArray(positions, b * stride);
+                    vC.fromArray(positions, c * stride);
+
+                    vA.applyMatrix4(mesh.matrixWorld);
+                    vB.applyMatrix4(mesh.matrixWorld);
+                    vC.applyMatrix4(mesh.matrixWorld);
+
+                    //console.log(vA);
+                    //console.log(vB);
+                    //console.log(vC);
+
+                    hull.addPoint(new Ammo.btVector3(vA.x, vA.y, vA.z));
+                    hull.addPoint(new Ammo.btVector3(vB.x, vB.y, vB.z));
+                    hull.addPoint(new Ammo.btVector3(vC.x, vC.y, vC.z));
+                }
+            }
+        }
+        else {
+
+            var positions = geometry.vb ? geometry.vb : attributes.position.array;
+            var stride = geometry.vb ? geometry.vbstride : 3;
+
+            for (var i = 0, j = 0, il = positions.length; i < il; i += 3, j += 9) {
+
+                var a = i;
+                var b = i + 1;
+                var c = i + 2;
+
+                vA.fromArray(positions, a * stride);
+                vB.fromArray(positions, b * stride);
+                vC.fromArray(positions, c * stride);
+
+                vA.applyMatrix4(mesh.matrixWorld);
+                vB.applyMatrix4(mesh.matrixWorld);
+                vC.applyMatrix4(mesh.matrixWorld);
+
+                //console.log(vA);
+                //console.log(vB);
+                //console.log(vC);
+
+                hull.addPoint(new Ammo.btVector3(vA.x, vA.y, vA.z));
+                hull.addPoint(new Ammo.btVector3(vB.x, vB.y, vB.z));
+                hull.addPoint(new Ammo.btVector3(vC.x, vC.y, vC.z));
+            }
         }
 
-        var faceBuffer = mesh.geometry.attributes.index.array;
 
-        for(var i=0; i < faceBuffer.length; i+=3) {
 
-            var v1 = vertices[faceBuffer[i]];
-            var v2 = vertices[faceBuffer[i+1]];
-            var v3 = vertices[faceBuffer[i+2]];
+        /*var indices = mesh.geometry.attributes.index.array || mesh.geometry.ib;
+
+         hull.addPoint(new Ammo.btVector3(
+         vertexBuffer[i],
+         vertexBuffer[i+1],
+         vertexBuffer[i+2]));
+
+        for(var i=0; i < indices.length; i+=3) {
+
+            var v1 = vertices[indices[i]];
+            var v2 = vertices[indices[i+1]];
+            var v3 = vertices[indices[i+2]];
 
             hull.addPoint(new Ammo.btVector3(
                 (v1.x + v2.x) / 2.0,
@@ -665,7 +728,7 @@ Autodesk.ADN.Viewing.Extension.Physics = function (viewer, options) {
                 (v1.x + v2.x + v3.x) / 3.0,
                 (v1.y + v2.y + v3.y) / 3.0,
                 (v1.z + v2.z + v3.z) / 3.0));
-        }
+        }*/
 
         return hull;
     }

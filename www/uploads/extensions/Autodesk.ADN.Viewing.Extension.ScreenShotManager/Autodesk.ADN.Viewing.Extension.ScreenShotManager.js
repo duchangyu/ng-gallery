@@ -216,8 +216,8 @@ Autodesk.ADN.Viewing.Extension.ScreenShotManager = function (viewer, options) {
       "Screenshot Manager",
       {shadow:true});
 
+    this.container.style.right = "0px";
     this.container.style.top = "0px";
-    this.container.style.left = "0px";
 
     this.container.style.width = "300px";
     this.container.style.height = "500px";

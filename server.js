@@ -44,6 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //API Routes
+app.use(config.host + '/embed', require('./routes/embed'));
 app.use(config.host + '/api/auth', require('./routes/api/auth'));
 app.use(config.host + '/api/token', require('./routes/api/token'));
 app.use(config.host + '/api/states', require('./routes/api/states'));

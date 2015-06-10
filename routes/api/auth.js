@@ -334,7 +334,7 @@ router.get('/loginerror', function(req, res) {
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
-router.get('/isauthenticated', function(req, res) {
+router.get('/isAuthenticated', function(req, res) {
 
   var response = {
     user: (req.isAuthenticated() ? req.user : null)

@@ -1,3 +1,27 @@
-<div>
-Upload
+
+<div class="console">
+
+  <div class="box droptreebox" id="upload-dropzone">
+
+    <div id="tree-box-list" aria-dropeffect="copy execute">
+      {{dropMessage}}
+    </div>
+
+    <treecontrol class="tree-light"
+                 tree-model="nodes"
+                 options="treeOptions"
+                 expanded-nodes="expandedNodes"
+                 on-selection="onNodeSelected(node, selected)">
+
+      <b ng-style="node.selected ? { 'color':'#FF0000'} : { 'color':'#00'}">{{node.label}}</b>{{node.value}}
+
+    </treecontrol>
+
+  </div>
+
+  <br>
+
+  <div style="min-height: 100px">
+  </div>
+
 </div>

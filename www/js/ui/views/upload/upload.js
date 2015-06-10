@@ -59,4 +59,133 @@ angular.module('Autodesk.ADN.AngularView.View.Upload',
         });
       }
 
+
+      ///////////////////////////////////////////////////////////////////////
+      //
+      //
+      ///////////////////////////////////////////////////////////////////////
+      var dropzone = document.getElementById('upload-dropzone');
+
+      dropzone.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        e.currentTarget.classList.add('over-line');
+      });
+
+      dropzone.addEventListener('dragleave', function (e) {
+        e.preventDefault();
+        e.currentTarget.classList.remove('over-line');
+      });
+
+      dropzone.addEventListener('drop', function (e) {
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        var file = e.dataTransfer.files[0];
+
+        console.log(file);
+
+        if($scope.selectedNode) {
+
+          createFileNode(file, $scope.selectedNode);
+        }
+        else {
+
+          createFileNode(file);
+        }
+
+        e.currentTarget.classList.remove('over-line');
+      });
+
+      ///////////////////////////////////////////////////////////////////////
+      //
+      //
+      ///////////////////////////////////////////////////////////////////////
+      function createNode(label, parent) {
+
+        var node = {
+          label: label,
+          children: [],
+          parent: parent,
+          selectable: false
+        }
+
+        if (parent)
+          parent.children.push(node);
+
+        return node;
+      }
+
+      ///////////////////////////////////////////////////////////////////////
+      //
+      //
+      ///////////////////////////////////////////////////////////////////////
+      function createFileNode(file, parent) {
+
+        var node = {
+          label: file.name,
+          children: [],
+          parent: parent,
+          selectable: true
+        }
+
+        if (parent) {
+
+          parent.children.push(node);
+        }
+        else {
+
+          $scope.nodes.push(node);
+        }
+
+        return node;
+      }
+
+      ///////////////////////////////////////////////////////////////////////
+      //
+      //
+      ///////////////////////////////////////////////////////////////////////
+      $scope.onNodeSelected = function(node, selected) {
+
+        if($scope.selectedNode) {
+
+          $scope.selectedNode.selected = false;
+
+          $scope.selectedNode = null;
+        }
+
+        node.selected = selected && node.selectable;
+
+        if(selected && node.selectable) {
+
+          $scope.selectedNode = node;
+        }
+      }
+
+      ///////////////////////////////////////////////////////////////////////
+      //
+      //
+      ///////////////////////////////////////////////////////////////////////
+      $scope.nodes = [];
+
+      $scope.expandedNodes = [];
+
+      $scope.treeOptions = {
+
+        multiSelection: false,
+        nodeChildren: "children",
+        dirSelectable: true,
+
+        injectClasses: {
+          "ul": "c-ul",
+          "li": "c-li",
+          "liSelected": "c-liSelected",
+          "iExpanded": "c-iExpanded",
+          "iCollapsed": "c-iCollapsed",
+          "iLeaf": "c-iLeaf",
+          "label": "c-label",
+          "labelSelected": "c-labelSelected"
+        }
+      }
+
     }]);

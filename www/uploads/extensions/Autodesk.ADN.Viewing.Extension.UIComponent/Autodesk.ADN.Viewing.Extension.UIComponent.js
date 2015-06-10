@@ -193,8 +193,8 @@ Autodesk.ADN.Viewing.Extension.UIComponent = function (viewer, options) {
       "UI Component Demo",
       {shadow: true});
 
+    this.container.style.right = "0px";
     this.container.style.top = "0px";
-    this.container.style.left = "0px";
 
     this.container.style.width = "380px";
     this.container.style.height = "400px";

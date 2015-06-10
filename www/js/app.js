@@ -136,9 +136,9 @@ angular.module('Autodesk.ADN.AngularView.App',
               //$locationProvider.html5Mode(true);
 
               ViewAndDataProvider.setTokenUrl(
-                "http://" +
-                window.location.host +
-                configClient.host + '/api/token');
+                configClient.ApiURL + '/token');
+
+
           }])
 
     ///////////////////////////////////////////////////////////////////////////
@@ -157,6 +157,19 @@ angular.module('Autodesk.ADN.AngularView.App',
                 waitSeconds: 0
             });
 
+            $http.get(configClient.ApiURL + '/auth/isAuthenticated').
+
+             success(function (user){
+
+                 AppState.isAuthenticated = user ? true : false;
+             }).
+
+             error(function(){
+
+                  AppState.isAuthenticated = false;
+             });
+
+
             $scope.$on('app.onModal', function (event, data) {
 
                 switch(data.dlgId) {
@@ -164,6 +177,7 @@ angular.module('Autodesk.ADN.AngularView.App',
                     case '#loginDlg':
 
                         if(!AppState.isAuthenticated) {
+
                             $scope.$broadcast('app.onLogin', data);
                         }
 
