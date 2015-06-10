@@ -20,9 +20,9 @@ var credentials = {};
 
 credentials.BaseUrl = 'https://developer-stg.api.autodesk.com';
 
-credentials.ClientId = '<replace with your clientId>';
+credentials.ConsumerKey = '<replace with your ConsumerKey>';
 
-credentials.ClientSecret = '<replace with your clientSecret>';
+credentials.SecretKey = '<replace with your SecretKey>';
 
 module.exports = credentials;
 
